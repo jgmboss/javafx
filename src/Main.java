@@ -22,54 +22,46 @@ public class Main extends Application {
             stage.setScene(scene);
             stage.show();
 
-            HBox leftAndRightBox = new HBox(20);
+            HBox leftAndRightBox = new HBox(200);
             leftAndRightBox.setAlignment(Pos.CENTER_LEFT);
 
-            Button bottomButton1 = new Button("I am on the left.");
-            leftAndRightBox.getChildren().add(bottomButton1);
-
-            Button bottomButton2 = new Button("I am also on the left.");
-            leftAndRightBox.getChildren().add(bottomButton2);
-
-            HBox rightSection = new HBox(20);
+         HBox rightSection = new HBox(100);
             HBox.setHgrow(rightSection, Priority.ALWAYS);
             rightSection.setAlignment(Pos.CENTER_RIGHT);
 
-            Button bottomButton3 = new Button("I am on the right.");
-            rightSection.getChildren().add(bottomButton3);
-            leftAndRightBox.getChildren().add(rightSection);
 
+            TabPane centerPane = new TabPane ();
+            centerPane.setPadding(new Insets(20,0,0,0));
+            centerPane.setStyle("-fx-background-color: grey");
 
-            TabPane centerPane = new TabPane();
+            Tab viewTab = new Tab();
+            viewTab.setText("View");
+            viewTab.setClosable(false);
+            VBox viewVBox = new VBox(10);
+            viewVBox.setPadding(new Insets(100));
+            viewVBox.getChildren().add(new Button("One"));
+            viewVBox.getChildren().add(new Button("Two"));
+            viewVBox.getChildren().add(new Button("Three"));
+            viewTab.setContent(viewVBox);
 
-            Tab numbersTab = new Tab();
-            numbersTab.setText("View");
-            numbersTab.setClosable(false);
-            VBox numbersVBox = new VBox(20);
-            numbersVBox.setPadding(new Insets(20));
-            numbersVBox.getChildren().add(new Button("One"));
-            numbersVBox.getChildren().add(new Button("Two"));
-            numbersVBox.getChildren().add(new Button("Three"));
-            numbersTab.setContent(numbersVBox);
+            Tab editTab = new Tab();
+            editTab.setText("Edit");
+            editTab.setClosable(false);
+            VBox editVBox = new VBox(10);
+            editVBox.setPadding(new Insets(100));
+            editVBox.getChildren().add(new Button("Red"));
+            editVBox.getChildren().add(new Button("Green"));
+            editVBox.getChildren().add(new Button("Blue"));
+            editTab.setContent(editVBox);
 
-            Tab coloursTab = new Tab();
-            coloursTab.setText("Edit");
-            coloursTab.setClosable(false);
-            VBox coloursVBox = new VBox(20);
-            coloursVBox.setPadding(new Insets(20));
-            coloursVBox.getChildren().add(new Button("Red"));
-            coloursVBox.getChildren().add(new Button("Green"));
-            coloursVBox.getChildren().add(new Button("Blue"));
-            coloursTab.setContent(coloursVBox);
-
-            centerPane.getTabs().addAll(numbersTab, coloursTab);
+            centerPane.getTabs().addAll(viewTab, editTab);
 
             BorderPane.setAlignment(centerPane, Pos.CENTER);
 
-            centerPane.setStyle("-fx-background-color: white");
+
 
             VBox centerPadding = new VBox();
-            centerPadding.setPadding(new Insets(30));
+            centerPadding.setPadding(new Insets(10));
             centerPadding.getChildren().add(centerPane);
 
             root.setCenter(centerPadding);
