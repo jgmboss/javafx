@@ -1,3 +1,4 @@
+import com.sun.javafx.fxml.builder.JavaFXSceneBuilder;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,11 +14,12 @@ public class Main extends Application {
         @Override
         public void start(Stage stage) throws Exception {
 
+
             BorderPane root = new BorderPane();
-            root.setStyle("-fx-background-color: darkgray");
+            root.getStyleClass().add("root");
 
             Scene scene = new Scene(root, 700, 400);
-
+            scene.getStylesheets().add("CSS.css");
             stage.setTitle("My JAVAFX");
             stage.setScene(scene);
             stage.show();
@@ -25,14 +27,10 @@ public class Main extends Application {
             HBox leftAndRightBox = new HBox(200);
             leftAndRightBox.setAlignment(Pos.CENTER_LEFT);
 
-         HBox rightSection = new HBox(100);
-            HBox.setHgrow(rightSection, Priority.ALWAYS);
-            rightSection.setAlignment(Pos.CENTER_RIGHT);
-
 
             TabPane centerPane = new TabPane ();
             centerPane.setPadding(new Insets(20,0,0,0));
-            centerPane.setStyle("-fx-background-color: grey");
+            centerPane.getStyleClass().add("tabPane");
 
             Tab viewTab = new Tab();
             viewTab.setText("View");
@@ -43,6 +41,7 @@ public class Main extends Application {
             viewVBox.getChildren().add(new Button("Two"));
             viewVBox.getChildren().add(new Button("Three"));
             viewTab.setContent(viewVBox);
+            viewTab.getStyleClass().add("tabs");
 
             Tab editTab = new Tab();
             editTab.setText("Edit");
@@ -60,7 +59,7 @@ public class Main extends Application {
 
 
 
-            VBox centerPadding = new VBox();
+           VBox centerPadding = new VBox();
             centerPadding.setPadding(new Insets(10));
             centerPadding.getChildren().add(centerPane);
 
