@@ -51,7 +51,9 @@ public class Main extends Application {
             editVBox.getChildren().add(new Button("Red"));
             editVBox.getChildren().add(new Button("Green"));
             editVBox.getChildren().add(new Button("Blue"));
+            editVBox.getStyleClass().add("tabPane");
             editTab.setContent(editVBox);
+            editTab.getStyleClass().add("tabs");
 
             centerPane.getTabs().addAll(viewTab, editTab);
 
