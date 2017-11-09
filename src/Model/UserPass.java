@@ -6,7 +6,7 @@ public class UserPass {
     private String userUN;
     private String userPASS;
 
-    public UserPass(int userUN, String userID, String userPASS) {
+    public UserPass(String userUN, int userID, String userPASS) {
         this.userUN = userUN;
         this.userID = userID;
         this.userPASS = userPASS;

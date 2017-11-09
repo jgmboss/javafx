@@ -1,4 +1,6 @@
-import com.sun.javafx.fxml.builder.JavaFXSceneBuilder;
+import Model.DatabaseConnection;
+import Model.Items;
+import Model.ItemsService;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,10 +11,18 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class Main extends Application {
+
+    //Under 'public class Main extends Application {'
+
+    public static DatabaseConnection database;
 
         @Override
         public void start(Stage stage) throws Exception {
+
+            database = new DatabaseConnection("Project database.db");
 
 
             BorderPane root = new BorderPane();
@@ -66,8 +76,17 @@ public class Main extends Application {
             centerPadding.getChildren().add(centerPane);
 
             root.setCenter(centerPadding);
+
+            ArrayList<Items> testList = new ArrayList<>();
+
+            ItemsService.selectAll(testList, database);
+
+            for (Items c: testList){
+                System.out.println(c);
+            }
         }
         public static void main(String[] args) {
             launch(args);
         }
     }
+
