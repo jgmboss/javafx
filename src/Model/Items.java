@@ -1,22 +1,26 @@
 package Model;
 
+import java.sql.Blob;
+
 public class Items {
     private int itemID;
     private String itemName;
     private String ItemDescription;
     private Double sellingPrice;
     private Double buyingPrice;
-    private String group;
+    private String groups;
     private int quantity;
+    private Blob ItemIMG;
 
-    public Items(int itemID, String itemName, String itemDescription, Double sellingPrice, Double buyingPrice, String group, int quantity) {
+    public Items(int itemID, String itemName, String itemDescription, Double sellingPrice, Double buyingPrice, String groups, int quantity, Blob itemIMG) {
         this.itemID = itemID;
         this.itemName = itemName;
         ItemDescription = itemDescription;
         this.sellingPrice = sellingPrice;
         this.buyingPrice = buyingPrice;
+        this.groups = groups;
         this.quantity = quantity;
-        this.group = group;
+        ItemIMG = itemIMG;
     }
 
     public int getItemID() {
@@ -59,6 +63,14 @@ public class Items {
         this.buyingPrice = buyingPrice;
     }
 
+    public String getGroups() {
+        return groups;
+    }
+
+    public void setGroups(String groups) {
+        this.groups = groups;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -67,16 +79,16 @@ public class Items {
         this.quantity = quantity;
     }
 
-    public String getGroup() {
-        return group;
+    public Blob getItemIMG() {
+        return ItemIMG;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setItemIMG(Blob itemIMG) {
+        ItemIMG = itemIMG;
     }
 
     @Override
     public String toString() {
-        return itemName + ItemDescription + group;
+        return itemName + ItemDescription + groups;
     }
 }

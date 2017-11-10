@@ -9,7 +9,7 @@ public class ItemsService {
 
     public static void selectAll(List<Items> targetList, DatabaseConnection database) {
 
-        PreparedStatement statement = database.newStatement("SELECT ItemID, ItemIMG, ItemName, ItemDescription, SellingPrice, BuyingPrice, Groups, Quantity FROM Items ORDER BY ItemID");
+        PreparedStatement statement = database.newStatement("SELECT ItemID, ItemIMG, ItemName, ItemDescription, SellingPrice, BuyingPrice, Groups, Quantity, ItemIMG FROM Items ORDER BY ItemID");
 
         try {
             if (statement != null) {
@@ -18,7 +18,7 @@ public class ItemsService {
 
                 if (results != null) {
                     while (results.next()) {
-                        targetList.add(new Items(results.getInt("ItemID"), results.getString("ItemName"), results.getString("ItemDescription"), results.getDouble("SellingPrice"), results.getDouble("BuyingPrice"), results.getString("Groups"), results.getInt("Quantity")));
+                        targetList.add(new Items(results.getInt("ItemID"), results.getString("ItemName"), results.getString("ItemDescription"), results.getDouble("SellingPrice"), results.getDouble("BuyingPrice"), results.getString("Groups"), results.getInt("Quantity"), results.getBlob("ItemIMG")));
                     }
                 }
             }
