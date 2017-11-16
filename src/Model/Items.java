@@ -1,7 +1,4 @@
 package Model;
-
-import java.sql.Blob;
-
 public class Items {
     private int itemID;
     private String itemName;
@@ -10,9 +7,9 @@ public class Items {
     private Double buyingPrice;
     private String groups;
     private int quantity;
-    private Blob ItemIMG;
+    private String ItemIMG;
 
-    public Items(int itemID, String itemName, String itemDescription, Double sellingPrice, Double buyingPrice, String groups, int quantity, Blob itemIMG) {
+    public Items(int itemID, String itemName, String itemDescription, Double sellingPrice, Double buyingPrice, String groups, int quantity, String itemIMG) {
         this.itemID = itemID;
         this.itemName = itemName;
         ItemDescription = itemDescription;
@@ -20,7 +17,7 @@ public class Items {
         this.buyingPrice = buyingPrice;
         this.groups = groups;
         this.quantity = quantity;
-        ItemIMG = itemIMG;
+        this.ItemIMG = itemIMG;
     }
 
     public int getItemID() {
@@ -79,16 +76,26 @@ public class Items {
         this.quantity = quantity;
     }
 
-    public Blob getItemIMG() {
+    public String getItemIMG() {
         return ItemIMG;
     }
 
-    public void setItemIMG(Blob itemIMG) {
+    public void setItemIMG(String itemIMG) {
         ItemIMG = itemIMG;
     }
 
     @Override
     public String toString() {
-        return itemName + ItemDescription + groups;
+        return "Items{" +
+                "itemID=" + itemID +
+                ", itemName='" + itemName + '\'' +
+                ", ItemDescription='" + ItemDescription + '\'' +
+                ", sellingPrice=" + sellingPrice +
+                ", buyingPrice=" + buyingPrice +
+                ", groups='" + groups + '\'' +
+                ", quantity=" + quantity +
+                '}';
     }
+
+
 }

@@ -18,7 +18,7 @@ public class ItemsService {
 
                 if (results != null) {
                     while (results.next()) {
-                        targetList.add(new Items(results.getInt("ItemID"), results.getString("ItemName"), results.getString("ItemDescription"), results.getDouble("SellingPrice"), results.getDouble("BuyingPrice"), results.getString("Groups"), results.getInt("Quantity"), results.getBlob("ItemIMG")));
+                        targetList.add(new Items(results.getInt("ItemID"), results.getString("ItemName"), results.getString("ItemDescription"), results.getDouble("SellingPrice"), results.getDouble("BuyingPrice"), results.getString("Groups"), results.getInt("Quantity"), results.getString("ItemIMG")));
                     }
                 }
             }
@@ -52,4 +52,3 @@ public class ItemsService {
 
 
     }
-
