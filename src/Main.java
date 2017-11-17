@@ -1,7 +1,4 @@
-import Model.DatabaseConnection;
-import Model.Items;
-import Model.ItemsService;
-import Model.UserService;
+import Model.*;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -47,11 +44,11 @@ public class Main extends Application {
         usersDatabase = new DatabaseConnection("Users.db");
 
 
-        ArrayList<Items> testList = new ArrayList<>();
+        ArrayList<Users> testList = new ArrayList<>();
 
         UserService.selectAll(testList, usersDatabase);
 
-        for (Items c : testList) {
+        for (Users c : testList) {
             System.out.println(c);
         }
     }
