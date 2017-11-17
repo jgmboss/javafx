@@ -6,19 +6,18 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ItemsService {
+    public static void selectAll(List<Items> targetList, DatabaseConnection itemsDatabase) {
 
-    public static void selectAll(List<Items> targetList, DatabaseConnection database) {
-
-        PreparedStatement statement = database.newStatement("SELECT ItemID, ItemIMG, ItemName, ItemDescription, SellingPrice, BuyingPrice, Groups, Quantity, ItemIMG FROM Items ORDER BY ItemID");
+        PreparedStatement statement = itemsDatabase.newStatement("SELECT ItemID, ItemIMG, ItemName, ItemDescription, SellingPrice, BuyingPrice, Groups, Quantity, ItemIMG FROM Items ORDER BY ItemID");
 
         try {
             if (statement != null) {
 
-                ResultSet results = database.executeQuery(statement);
+                ResultSet results = itemsDatabase.executeQuery(statement);
 
                 if (results != null) {
                     while (results.next()) {
-                        targetList.add(new Items(results.getInt("ItemID"), results.getString("ItemName"), results.getString("ItemDescription"), results.getDouble("SellingPrice"), results.getDouble("BuyingPrice"), results.getString("Groups"), results.getInt("Quantity"), results.getString("ItemIMG")));
+                        targetList.add(new Items(results.getInt("ItemID"), results.getString("ItemName"), results.getString("ItemDescription"), results.getDouble("SellingPrice"), results.getDouble("BuyingPrice"), results.getString("Groups"), results.getInt("Quantity"), results.getString("itemIMG")));
                     }
                 }
             }
@@ -27,20 +26,20 @@ public class ItemsService {
         }
     }
 
-   /* public static Items selectById(int id, DatabaseConnection database) {
+    public static Items selectById(int id, DatabaseConnection itemDatabase) {
 
         Items result = null;
 
-        PreparedStatement statement = database.newStatement("SELECT x, y, z FROM Table WHERE id = ?");
+        PreparedStatement statement = itemDatabase.newStatement("SELECT itemID, itemName, ItemDescription, sellingPrice, buyingPrice, groups, quantity, itemIMG FROM Table WHERE itemID = ?");
 
         try {
             if (statement != null) {
 
                 statement.setInt(1, id);
-                ResultSet results = database.executeQuery(statement);
+                ResultSet results = itemDatabase.executeQuery(statement);
 
                 if (results != null) {
-                    result = new Items(results.getInt("x"), results.getString("y"), results.getString("z"));
+                    result = new Items(results.getInt("itemID"), results.getString("itemName"), results.getString("ItemDescription"), results.getDouble("sellingPrice"), results.getDouble("buyingPrice"), results.getString("groups"), results.getInt("quantity"), results.getString("itemIMG"));
                 }
             }
         } catch (SQLException resultsException) {
@@ -48,7 +47,7 @@ public class ItemsService {
         }
 
         return result;
-    }*/
 
 
     }
+}

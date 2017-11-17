@@ -1,6 +1,7 @@
 import Model.DatabaseConnection;
 import Model.Items;
 import Model.ItemsService;
+import Model.UserService;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,76 +18,43 @@ public class Main extends Application {
 
     //Under 'public class Main extends Application {'
 
-    public static DatabaseConnection database;
+  /*  public static DatabaseConnection itemsDatabase;
 
-        @Override
-        public void start(Stage stage) throws Exception {
+    @Override
+    public void start(Stage stage) throws Exception {
 
-            database = new DatabaseConnection("Project database.db");
-
-
-            BorderPane root = new BorderPane();
-            root.getStyleClass().add("root");
-
-            Scene scene = new Scene(root, 700, 400);
-            scene.getStylesheets().add("CSS.css");
-            stage.setTitle("My JAVAFX");
-            stage.setScene(scene);
-            stage.show();
-
-            HBox leftAndRightBox = new HBox(200);
-            leftAndRightBox.setAlignment(Pos.CENTER_LEFT);
+        itemsDatabase = new DatabaseConnection("Items.db");
 
 
-            TabPane centerPane = new TabPane ();
-            centerPane.setPadding(new Insets(20,0,0,0));
-            centerPane.getStyleClass().add("tabPane");
+        ArrayList<Items> testList = new ArrayList<>();
 
-            Tab viewTab = new Tab();
-            viewTab.setText("View");
-            viewTab.setClosable(false);
-            VBox viewVBox = new VBox(10);
-            viewVBox.setPadding(new Insets(100));
-            viewVBox.getChildren().add(new Button("One"));
-            viewVBox.getChildren().add(new Button("Two"));
-            viewVBox.getChildren().add(new Button("Three"));
-            viewTab.setContent(viewVBox);
-            viewTab.getStyleClass().add("tabs");
+        ItemsService.selectAll(testList, itemsDatabase);
 
-            Tab editTab = new Tab();
-            editTab.setText("Edit");
-            editTab.setClosable(false);
-            VBox editVBox = new VBox(10);
-            editVBox.setPadding(new Insets(100));
-            editVBox.getChildren().add(new Button("Red"));
-            editVBox.getChildren().add(new Button("Green"));
-            editVBox.getChildren().add(new Button("Blue"));
-            editVBox.getStyleClass().add("tabPane");
-            editTab.setContent(editVBox);
-            editTab.getStyleClass().add("tabs");
-
-            centerPane.getTabs().addAll(viewTab, editTab);
-
-            BorderPane.setAlignment(centerPane, Pos.CENTER);
-
-
-
-           VBox centerPadding = new VBox();
-            centerPadding.setPadding(new Insets(10));
-            centerPadding.getChildren().add(centerPane);
-
-            root.setCenter(centerPadding);
-
-            ArrayList<Items> testList = new ArrayList<>();
-
-            ItemsService.selectAll(testList, database);
-
-            for (Items c: testList){
-                System.out.println(c);
-            }
-        }
-        public static void main(String[] args) {
-            launch(args);
+        for (Items c : testList) {
+            System.out.println(c);
         }
     }
+*/
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    public static DatabaseConnection usersDatabase;
+
+    @Override
+    public void start(Stage stage) throws Exception {
+
+        usersDatabase = new DatabaseConnection("Users.db");
+
+
+        ArrayList<Items> testList = new ArrayList<>();
+
+        UserService.selectAll(testList, usersDatabase);
+
+        for (Items c : testList) {
+            System.out.println(c);
+        }
+    }
+}
+
 

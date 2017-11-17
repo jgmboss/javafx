@@ -7,7 +7,7 @@ public class Items {
     private Double buyingPrice;
     private String groups;
     private int quantity;
-    private String ItemIMG;
+    private String itemIMG;
 
     public Items(int itemID, String itemName, String itemDescription, Double sellingPrice, Double buyingPrice, String groups, int quantity, String itemIMG) {
         this.itemID = itemID;
@@ -17,7 +17,7 @@ public class Items {
         this.buyingPrice = buyingPrice;
         this.groups = groups;
         this.quantity = quantity;
-        this.ItemIMG = itemIMG;
+        this.itemIMG = itemIMG;
     }
 
     public int getItemID() {
@@ -77,24 +77,16 @@ public class Items {
     }
 
     public String getItemIMG() {
-        return ItemIMG;
+        return itemIMG;
     }
 
     public void setItemIMG(String itemIMG) {
-        ItemIMG = itemIMG;
+        itemIMG = itemIMG;
     }
 
     @Override
     public String toString() {
-        return "Items{" +
-                "itemID=" + itemID +
-                ", itemName='" + itemName + '\'' +
-                ", ItemDescription='" + ItemDescription + '\'' +
-                ", sellingPrice=" + sellingPrice +
-                ", buyingPrice=" + buyingPrice +
-                ", groups='" + groups + '\'' +
-                ", quantity=" + quantity +
-                '}';
+        return itemID + ' ' + itemName + ' ' + ItemDescription +' '+'£'+  sellingPrice +' '+'£'+  buyingPrice +' '+ groups+ ' '+ quantity;
     }
 
 
