@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserService {
-    public static void selectAll(List<Items> targetList, DatabaseConnection userDatabase) {
+    public static void selectAll(List<Users> targetList, DatabaseConnection userDatabase) {
 
-        PreparedStatement statement = userDatabase.newStatement("SELECT userFN, userLN, userIMG, manager, active, userID FROM Items ORDER BY userID");
+        PreparedStatement statement = userDatabase.newStatement("SELECT userFN, userSN, userIMG, manager, active, userID FROM Users ORDER BY userID");
 
         try {
             if (statement != null) {
@@ -17,7 +17,7 @@ public class UserService {
 
                 if (results != null) {
                     while (results.next()) {
-                        targetList.add(new Users (results.getString("userFN"), results.getString("userLN"), results.getString("userIMG"), results.getBoolean("manager"), results.getBoolean("active"),results.getInt("userID")));
+                        targetList.add(new Users (results.getString("userFN"), results.getString("userSN"), results.getString("userIMG"), results.getBoolean("manager"), results.getBoolean("active"),results.getInt("userID")));
                     }
                 }
             }

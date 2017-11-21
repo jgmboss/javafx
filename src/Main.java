@@ -11,17 +11,16 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-public class Main extends Application {
+public class Main {
 
     //Under 'public class Main extends Application {'
 
-  /*  public static DatabaseConnection itemsDatabase;
+    public static DatabaseConnection itemsDatabase;
+    public static DatabaseConnection usersDatabase;
 
-    @Override
-    public void start(Stage stage) throws Exception {
-
+    public static void main(String[] args) {
         itemsDatabase = new DatabaseConnection("Items.db");
-
+        usersDatabase = new DatabaseConnection("Users.db");
 
         ArrayList<Items> testList = new ArrayList<>();
 
@@ -30,26 +29,14 @@ public class Main extends Application {
         for (Items c : testList) {
             System.out.println(c);
         }
-    }
-*/
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    public static DatabaseConnection usersDatabase;
-
-    @Override
-    public void start(Stage stage) throws Exception {
-
-        usersDatabase = new DatabaseConnection("Users.db");
 
 
-        ArrayList<Users> testList = new ArrayList<>();
+        ArrayList<Users> testList2 = new ArrayList<>();
 
-        UserService.selectAll(testList, usersDatabase);
+        UserService.selectAll(testList2, usersDatabase);
 
-        for (Users c : testList) {
-            System.out.println(c);
+        for (Users d : testList2) {
+            System.out.println(d);
         }
     }
 }
