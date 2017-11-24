@@ -25,4 +25,59 @@ public class UserService {
             System.out.println("Database select all error: " + resultsException.getMessage());
         }
     }
+    public static Users selectById(int id, DatabaseConnection UserDatabase) {
+
+        Users result = null;
+
+        PreparedStatement statement = UserDatabase.newStatement("SELECT userFN, userIMG, userLN, manager, active, userID FROM Table WHERE itemID = ?");
+
+        try {
+            if (statement != null) {
+
+                statement.setInt(1, id);
+                ResultSet results = UserDatabase.executeQuery(statement);
+
+                if (results != null) {
+                    result = new Users(results.getString("userFN"), results.getString("userIMG"), results.getString("userLN"), results.getBoolean("manager"), results.getBoolean("active"), results.getInt("userID"));
+                }
+            }
+        } catch (SQLException resultsException) {
+            System.out.println("Database select by id error: " + resultsException.getMessage());
+        }
+
+        return result;
+
+
+    }
+    public static void save(Users itemToSave, DatabaseConnection database) {
+
+        Users existingItem = null;
+        if (itemToSave.getUserID() != 0) existingItem = selectById(itemToSave.getUserID(), database);
+
+        try {
+            if (existingItem == null) {
+                PreparedStatement statement = database.newStatement("INSERT INTO Users (userFN, userIMG, userLN, manager, active,) VALUES (?, ?, ?, ?, ?))");
+                statement.setString(1, itemToSave.getUserFN());
+                statement.setString(2, itemToSave.getUserIMG());
+                statement.setString(3, itemToSave.getUserLN());
+                statement.setBoolean(4, itemToSave.getManager());
+                statement.setBoolean(5, itemToSave.getActive());
+                database.executeUpdate(statement);
+            }
+            else {
+                PreparedStatement statement = database.newStatement("UPDATE Table SET userFN = ?, userIMG = ?, userLN = ?, manager = ?, active = ? WHERE userID = ?");
+                statement.setString(1, itemToSave.getUserFN());
+                statement.setString(2, itemToSave.getUserIMG());
+                statement.setString(3, itemToSave.getUserLN());
+                statement.setBoolean(4, itemToSave.getManager());
+                statement.setBoolean(5, itemToSave.getActive());
+                statement.setInt(6, itemToSave.getUserID());
+                database.executeUpdate(statement);
+            }
+        } catch (SQLException resultsException) {
+            System.out.println("Database saving error: " + resultsException.getMessage());
+        }
+    }
+
 }
+
