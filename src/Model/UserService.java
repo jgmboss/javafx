@@ -78,6 +78,19 @@ public class UserService {
             System.out.println("Database saving error: " + resultsException.getMessage());
         }
     }
+    public static void deleteById(int id, DatabaseConnection database) {
+
+        PreparedStatement statement = database.newStatement("DELETE FROM Users WHERE userID = ?");
+
+        try {
+            if (statement != null) {
+                statement.setInt(1, id);
+                database.executeUpdate(statement);
+            }
+        } catch (SQLException resultsException) {
+            System.out.println("Database deletion error: " + resultsException.getMessage());
+        }
+    }
 
 }
 
