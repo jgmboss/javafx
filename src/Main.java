@@ -34,7 +34,7 @@ public class Main extends Application{
 
         scene.getStylesheets().add("CSS.css");
 
-        VBox centerPane = new VBox(20);
+        HBox subSection = new HBox();
         Button myButton = new Button("Enter");
         myButton.setPrefSize(100, 35);
         myButton.setOnAction((ActionEvent ae) -> System.out.println("hello"));
@@ -44,6 +44,9 @@ public class Main extends Application{
         centerPane.setAlignment(Pos.CENTER);
         BorderPane.setAlignment(centerPane, Pos.CENTER);
         centerPane.getStyleClass().add("centerPane");
+        
+        
+        
 
     }
     public void accounts (Stage stage) throws Exception {
