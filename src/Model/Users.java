@@ -1,75 +1,102 @@
 package Model;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Users {
 
-    private String userFN;
-    private String userLN;
-    private String userIMG;
-    private Boolean manager;
-    private Boolean active;
-    private int userID;
+    private final SimpleStringProperty userFN;
+    private final SimpleStringProperty userIMG;
+    private final SimpleStringProperty userLN;
+    private final SimpleBooleanProperty manager;
+    private final SimpleBooleanProperty active;
+    private final SimpleIntegerProperty userID;
 
     public Users(String userFN, String userIMG, String userLN, Boolean manager, Boolean active, int userID) {
-        this.userFN = userFN;
-        this.userIMG = userIMG;
-        this.userLN = userLN;
-        this.manager = manager;
-        this.active = active;
-        this.userID = userID;
+        this.userFN  = new SimpleStringProperty(userFN);
+        this.userIMG = new SimpleStringProperty(userIMG);
+        this.userLN  = new SimpleStringProperty(userLN);
+        this.manager = new SimpleBooleanProperty(manager);
+        this.active  = new SimpleBooleanProperty(active);
+        this.userID  = new SimpleIntegerProperty(userID);
     }
 
     public String getUserFN() {
+        return userFN.get();
+    }
+
+    public SimpleStringProperty userFNProperty() {
         return userFN;
     }
 
     public void setUserFN(String userFN) {
-        this.userFN = userFN;
+        this.userFN.set(userFN);
     }
 
     public String getUserIMG() {
+        return userIMG.get();
+    }
+
+    public SimpleStringProperty userIMGProperty() {
         return userIMG;
     }
 
     public void setUserIMG(String userIMG) {
-        this.userIMG = userIMG;
+        this.userIMG.set(userIMG);
     }
 
     public String getUserLN() {
+        return userLN.get();
+    }
+
+    public SimpleStringProperty userLNProperty() {
         return userLN;
     }
 
     public void setUserLN(String userLN) {
-        this.userLN = userLN;
+        this.userLN.set(userLN);
     }
 
-    public Boolean getManager() {
+    public boolean isManager() {
+        return manager.get();
+    }
+
+    public SimpleBooleanProperty managerProperty() {
         return manager;
     }
 
-    public void setManager(Boolean manager) {
-        this.manager = manager;
+    public void setManager(boolean manager) {
+        this.manager.set(manager);
     }
 
-    public Boolean getActive() {
+    public boolean isActive() {
+        return active.get();
+    }
+
+    public SimpleBooleanProperty activeProperty() {
         return active;
     }
 
-    public void setActive(Boolean active) {
-        this.active = active;
+    public void setActive(boolean active) {
+        this.active.set(active);
     }
 
     public int getUserID() {
+        return userID.get();
+    }
+
+    public SimpleIntegerProperty userIDProperty() {
         return userID;
     }
 
     public void setUserID(int userID) {
-        this.userID = userID;
+        this.userID.set(userID);
     }
 
     @Override
     public String toString() {
-        return userFN + userIMG + userLN;
+        return userFN +" " + userIMG + " " + userLN;
     }
-
 }
 
