@@ -74,11 +74,23 @@ Scene edit;
         welcome.setTranslateX(230);
         welcome.setTranslateY(42);
         //input code
+        TextField usernameIn = new TextField ();
+        HBox hb = new HBox();
+        HBox.setPromptText("Enter Your Password");
+        hb.getChildren().addAll(login, usernameIn);
+        hb.setSpacing(10);
         
-        Label login = new Label("Password");
+        Label pass = new Label("Password");
         welcome.setTranslateX(230);
         welcome.setTranslateY(59);
         //input code
+        PasswordField passwordIn = new PasswordField();
+        passwordField.setPromptText("Enter Your Password");
+        
+        passwordIn.setOnAction(new EventHandler<passwordHasher>() {
+   
+    }
+        
         
         Button toWelcome = new Button("Enter");
         toWelcome.setPrefSize(162, 31);
