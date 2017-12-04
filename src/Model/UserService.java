@@ -60,8 +60,8 @@ public class UserService {
                 statement.setString(1, itemToSave.getUserFN());
                 statement.setString(2, itemToSave.getUserIMG());
                 statement.setString(3, itemToSave.getUserLN());
-                statement.setBoolean(4, itemToSave.getManager());
-                statement.setBoolean(5, itemToSave.getActive());
+                statement.setBoolean(4, itemToSave.isManager());
+                statement.setBoolean(5, itemToSave.isActive());
                 database.executeUpdate(statement);
             }
             else {
@@ -69,8 +69,8 @@ public class UserService {
                 statement.setString(1, itemToSave.getUserFN());
                 statement.setString(2, itemToSave.getUserIMG());
                 statement.setString(3, itemToSave.getUserLN());
-                statement.setBoolean(4, itemToSave.getManager());
-                statement.setBoolean(5, itemToSave.getActive());
+                statement.setBoolean(4, itemToSave.isManager());
+                statement.setBoolean(5, itemToSave.isActive());
                 statement.setInt(6, itemToSave.getUserID());
                 database.executeUpdate(statement);
             }
