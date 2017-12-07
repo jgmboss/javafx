@@ -1,4 +1,4 @@
-
+package Views;
 //import Model.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -8,33 +8,37 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 
-public class Main extends Application{
+public class Main extends Application {
 
+    public static Stage stage;
     Scene login;
     Scene signUp;
 
-    //Under 'public class Main extends Application {'
+
+
+
+    //Under 'public class Views.Main extends Application {'
     @Override
     public void start (Stage stage) throws Exception {
 
-        stage.setTitle("Inventory");
-        stage.show();
+        Main.stage = stage;
 
-        //scene.getStylesheets().add("CSS.css");
+        Main.stage.setTitle("Inventory");
+        Main.stage.show();
 
-        Pane subSection = new Pane(); //this will be the template for all the scenes so it looks professional 
-        subSection.setPrefSize(586, 263);
+        Pane subSection = new Pane(); //this will be the template for all the scenes so it looks professional
+        //below is what the subsection looks like, this will be repeated in all the views
+        subSection.setPrefSize(586,263);
         subSection.setTranslateX(0);
         subSection.setTranslateY(80);
-        subSection.setStyle( "-fx-background-color: Darkgray;"
-        );
+        subSection.setStyle("-fx-background-color: Darkgray;");
 
         Scene startScene = new Scene(subSection, 586, 350); //creates new scene with my template and the size of the scene (which will always be the same)
         //these are things that will be in the startScene scene
 
         Button toLogin = new Button("Enter");
         toLogin.setPrefSize(162, 31);
-        toLogin.setOnAction((ActionEvent ae) -> System.out.println("It Works!")); //stage.setScene(login)); //once clicked, login scene opens
+        toLogin.setOnAction((ActionEvent ae) -> Main.stage.setScene(Login.login())); //once clicked, Login scene opens
         toLogin.setTranslateX(212);
         toLogin.setTranslateY(192);
 
@@ -50,18 +54,8 @@ public class Main extends Application{
         subSection.getChildren().add(welcomeTxt);
         subSection.getChildren().add(inventory);
 
-        stage.setScene(startScene);
+        Main.stage.setScene(startScene);
     }
-
-    /* public void accounts (Stage stage) throws Exception {
-    ObservableList<Users> users = FXCollections.observableArrayList(
-    new Users("Jacob", ":)", "smith"),
-    new Users("Isabella", ":)", "Johnson"),
-    new Users("Ethan", ":)", "Williams"),
-    new Users("Emma", ":)", "Jones"),
-    new Users("Michael", ":)", "brown")
-    );
-     */
 
     public static void main(String[] args) {
         launch(args);

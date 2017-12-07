@@ -8,14 +8,14 @@ import javafx.stage.Stage;
 
 //
 //    @Override
-//    public void login(Stage stage) throws Exception {
+//    public void Login(Stage stage) throws Exception {
 //
 //        stage.setTitle("Inventory");
 //        stage.show();
 //
 //        Pane subSection = new Pane();
 //
-//        Scene login = new Scene(subSection, 586, 350);
+//        Scene Login = new Scene(subSection, 586, 350);
 //
 //
 //        Scene signUp = new Scene(subSection, 586, 350);
