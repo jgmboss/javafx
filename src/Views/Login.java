@@ -61,7 +61,7 @@ public class Login {
 
         Button toSignup = new Button("Sign Up");
         toSignup.setPrefSize(90, 31);
-        toSignup.setOnAction((ActionEvent ae) -> System.out.println("It works!"));//stage.setScene(signUp)); //once clicked, Login scene opens
+        toSignup.setOnAction((ActionEvent ae) -> Main.stage.setScene(SignUp.signUp())); //once clicked, Signup scene opens
         toSignup.setTranslateX(490);
         toSignup.setTranslateY(230);
 

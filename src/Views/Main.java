@@ -11,11 +11,6 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static Stage stage;
-    Scene login;
-    Scene signUp;
-
-
-
 
     //Under 'public class Views.Main extends Application {'
     @Override
