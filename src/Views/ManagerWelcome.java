@@ -1,8 +1,11 @@
 package Views;
 
+import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
 public class ManagerWelcome {
 
@@ -28,13 +31,37 @@ public class ManagerWelcome {
         subSection.setStyle("-fx-background-color: Darkgray;");
 
         Label hello = new Label("Hello");
-        hello.setTranslateX(250);
-        hello.setTranslateY(38);
+        hello.setTranslateX(242);
+        hello.setTranslateY(30);
+
+        Button toViewItems = new Button("View Items");
+        toViewItems.setPrefSize(162, 31);
+        toViewItems.setOnAction((ActionEvent ae) -> System.out.println("It works!"));//stage.setScene(Login)); //once clicked, Login scene opens
+        toViewItems.setTranslateX(212);
+        toViewItems.setTranslateY(50);
+
+        Button toAccounts = new Button("Accounts");
+        toAccounts.setPrefSize(162, 31);
+        toAccounts.setOnAction((ActionEvent ae) -> System.out.println("It works!"));//stage.setScene(Login)); //once clicked, Login scene opens
+        toAccounts.setTranslateX(212);
+        toAccounts.setTranslateY(90);
+
+        Button toSettings = new Button("Settings");
+        toSettings.setPrefSize(162, 31);
+        toSettings.setOnAction((ActionEvent ae) -> System.out.println("It works!"));//stage.setScene(Login)); //once clicked, Login scene opens
+        toSettings.setTranslateX(212);
+        toSettings.setTranslateY(130);
+
+        Button toLogin = new Button("Logout");
+        toLogin.setPrefSize(90, 31);
+        toLogin.setOnAction((ActionEvent ae) -> System.out.println("It works!"));//stage.setScene(Login)); //once clicked, Login scene opens
+        toLogin.setTranslateX(490);
+        toLogin.setTranslateY(230);
 
         Scene managerWelcome = new Scene(subSection);
 
         topSection.getChildren().add(userManager);
-        subSection.getChildren().addAll(topSection, hello);
+        subSection.getChildren().addAll(topSection, hello, toLogin, toAccounts, toViewItems, toSettings);
 
         return managerWelcome;
     }
