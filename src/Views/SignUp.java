@@ -1,5 +1,6 @@
 package Views;
 
+import Controller.SignUpController;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,6 +11,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class SignUp {
+
+    public static TextField usernameIn;
+    public static PasswordField passIn;
+    public static PasswordField passIn2;
+    public static TextField fNameIn;
+    public static TextField lNameIn;
 
     public static Scene signUp() {
 
@@ -32,7 +39,7 @@ public class SignUp {
         usernameTxt.setTranslateX(50);
         usernameTxt.setTranslateY(40);
 
-        TextField usernameIn = new TextField();
+        usernameIn = new TextField();
         usernameIn.setPromptText("Username");
         usernameIn.setTranslateX(50);
         usernameIn.setTranslateY(60);
@@ -41,7 +48,7 @@ public class SignUp {
         passTxt.setTranslateX(50);
         passTxt.setTranslateY(90);
 
-        PasswordField passIn = new PasswordField();
+        passIn = new PasswordField();
         passIn.setPromptText("Password");
         passIn.setTranslateX(50);
         passIn.setTranslateY(110);
@@ -50,7 +57,7 @@ public class SignUp {
         passTxt2.setTranslateX(50);
         passTxt2.setTranslateY(140);
 
-        PasswordField passIn2 = new PasswordField();
+        passIn2 = new PasswordField();
         passIn2.setPromptText("Password");
         passIn2.setTranslateX(50);
         passIn2.setTranslateY(160);
@@ -59,7 +66,7 @@ public class SignUp {
         fNameTxt.setTranslateX(250);
         fNameTxt.setTranslateY(60);
 
-        TextField fNameIn = new TextField();
+        fNameIn = new TextField();
         fNameIn.setPromptText("Enter here");
         fNameIn.setTranslateX(250);
         fNameIn.setTranslateY(80);
@@ -68,20 +75,20 @@ public class SignUp {
         lNameTxt.setTranslateX(250);
         lNameTxt.setTranslateY(110);
 
-        TextField lNameIn = new TextField();
+        lNameIn = new TextField();
         lNameIn.setPromptText("Enter here");
         lNameIn.setTranslateX(250);
         lNameIn.setTranslateY(130);
 
         Button toLogin2 = new Button("Enter");
         toLogin2.setPrefSize(162, 31);
-        toLogin2.setOnAction((ActionEvent ae) -> System.out.println("It works!"));//stage.setScene(Login)); //once clicked, Login scene opens
+        toLogin2.setOnAction((ae) -> SignUpController.gotoSignUpScreen());//stage.setScene(Login)); //once clicked, Login scene opens
         toLogin2.setTranslateX(212);
         toLogin2.setTranslateY(192);
 
         Button toLogin = new Button("Back");
         toLogin.setPrefSize(90, 31);
-        toLogin.setOnAction((ActionEvent ae) -> System.out.println("It works!")); //once clicked, Login scene opens
+        toLogin.setOnAction((ae) -> SignUpController.gotoLoginScreen());//")); //once clicked, Login scene opens
         toLogin.setTranslateX(490);
         toLogin.setTranslateY(230);
 

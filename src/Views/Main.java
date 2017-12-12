@@ -1,5 +1,6 @@
 package Views;
 //import Model.*;
+import Controller.MainController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
@@ -33,7 +34,7 @@ public class Main extends Application {
 
         Button toLogin = new Button("Enter");
         toLogin.setPrefSize(162, 31);
-        toLogin.setOnAction((ActionEvent ae) -> Main.stage.setScene(Login.login())); //once clicked, Login scene opens
+        toLogin.setOnAction((ae) -> MainController.gotoLoginScreen()); //once clicked, Login scene opens
         toLogin.setTranslateX(212);
         toLogin.setTranslateY(192);
 
@@ -53,6 +54,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        MainController.initiateDatabases();
         launch(args);
     }
 }
