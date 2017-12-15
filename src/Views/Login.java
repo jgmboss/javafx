@@ -37,6 +37,7 @@ public class Login {
         userNametxt.setTranslateX(270);
         userNametxt.setTranslateY(42);
 
+
         //input code
         usernameIn = new TextField();
         usernameIn.setPromptText("Enter Your Username");

@@ -5,6 +5,7 @@ import Model.UserPassService;
 import Views.Login;
 import Views.Main;
 import Views.SignUp;
+import javafx.scene.control.Alert;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,12 @@ public class LoginController {
                 Main.stage.setScene(SignUp.signUp());
             }
             else {
-                
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Wrong Password or Username");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Beans");
+                    alert.showAndWait();
+
             }
 
         }

@@ -13,7 +13,7 @@ public class UserPassService {
 */
       public static void selectAll(List<UserPass> targetList, DatabaseConnection userPassDatabase) {
 
-          PreparedStatement statement = userPassDatabase.newStatement("SELECT userID, userUN, userPass FROM Users ORDER BY userID");
+          PreparedStatement statement = userPassDatabase.newStatement("SELECT userID, userUN, userPass FROM UserPass ORDER BY userID");
 
           try {
               if (statement != null) {

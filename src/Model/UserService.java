@@ -29,7 +29,7 @@ public class UserService {
 
         Users result = null;
 
-        PreparedStatement statement = UserDatabase.newStatement("SELECT userFN, userIMG, userLN, manager, active, userID FROM Table WHERE itemID = ?");
+        PreparedStatement statement = UserDatabase.newStatement("SELECT userFN, userIMG, userLN, manager, active, userID FROM Users WHERE itemID = ?");
 
         try {
             if (statement != null) {
@@ -47,8 +47,8 @@ public class UserService {
 
         return result;
 
-
     }
+
     public static void save(Users itemToSave, DatabaseConnection database) {
 
         Users existingItem = null;
