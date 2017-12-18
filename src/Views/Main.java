@@ -61,32 +61,18 @@ public class Main extends Application {
         subSection.getChildren().add(welcomeTxt);
         subSection.getChildren().add(inventory);
 
-        Image testImage = new Image("Resources/trumpet.jpg");
+        /*Image testImage = new Image("Resources/trumpet.jpg");
         ImageView testImageView = new ImageView(testImage);
         testImageView.setScaleX(0.2);
         testImageView.setScaleY(0.2);
-        subSection.getChildren().add(testImageView);
+        subSection.getChildren().add(testImageView);*/
 
 
         Main.stage.setScene(startScene);
 
+        stage.setOnCloseRequest((we) -> MainController.exitPrompt(we));
     }
 
-    public void exitPrompt(WindowEvent we) {
-
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Exit Inventory");
-        alert.setHeaderText("Are you sure you want to exit?");
-
-        Optional result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            database.disconnect();
-            System.exit(0);
-        } else {
-            we.consume();
-        }
-
-    }
     public static void main(String[] args) {
         MainController.initiateDatabases();
         launch(args);

@@ -5,11 +5,18 @@ import Views.Main;
 import Views.SignUp;
 
 public class SignUpController {
+
+    public static void Temp (){
+
+        System.out.println("It works!");
+
+    }
     public static void gotoLoginScreen() {
         Main.stage.setScene(Login.login());
     }
 
-    public static void gotoSignUpScreen() {
-        Main.stage.setScene(SignUp.signUp());
+    public static void madeNewAccount(){
+        //store input into database
+        Main.stage.setScene(Login.login());
     }
 }

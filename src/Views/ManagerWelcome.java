@@ -1,5 +1,6 @@
 package Views;
 
+import Controller.ManagerWelcomeController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
@@ -19,7 +20,7 @@ public class ManagerWelcome {
         topSection.setTranslateX(0);
         topSection.setTranslateY(-87);
 
-        Label userManager = new Label("Manager");
+        Label userManager = new Label("manager");
         userManager.setTranslateX(2);
         userManager.setTranslateY(70);
 
@@ -36,25 +37,25 @@ public class ManagerWelcome {
 
         Button toViewItems = new Button("View Items");
         toViewItems.setPrefSize(162, 31);
-        toViewItems.setOnAction((ActionEvent ae) -> System.out.println("It works!"));//stage.setScene(Login)); //once clicked, Login scene opens
+        toViewItems.setOnAction((ActionEvent ae) -> ManagerWelcomeController.toView());//stage.setScene(Login)); //once clicked, Login scene opens
         toViewItems.setTranslateX(212);
         toViewItems.setTranslateY(50);
 
         Button toAccounts = new Button("Accounts");
         toAccounts.setPrefSize(162, 31);
-        toAccounts.setOnAction((ActionEvent ae) -> System.out.println("It works!"));//stage.setScene(Login)); //once clicked, Login scene opens
+        toAccounts.setOnAction((ActionEvent ae) -> ManagerWelcomeController.viewAccounts());//stage.setScene(Login)); //once clicked, Login scene opens
         toAccounts.setTranslateX(212);
         toAccounts.setTranslateY(90);
 
         Button toSettings = new Button("Settings");
         toSettings.setPrefSize(162, 31);
-        toSettings.setOnAction((ActionEvent ae) -> System.out.println("It works!"));//stage.setScene(Login)); //once clicked, Login scene opens
+        toSettings.setOnAction((ActionEvent ae) -> ManagerWelcomeController.goToSettings());//stage.setScene(Login)); //once clicked, Login scene opens
         toSettings.setTranslateX(212);
         toSettings.setTranslateY(130);
 
         Button toLogin = new Button("Logout");
         toLogin.setPrefSize(90, 31);
-        toLogin.setOnAction((ActionEvent ae) -> System.out.println("It works!"));//stage.setScene(Login)); //once clicked, Login scene opens
+        toLogin.setOnAction((ActionEvent ae) -> ManagerWelcomeController.goToLogin());//stage.setScene(Login)); //once clicked, Login scene opens
         toLogin.setTranslateX(490);
         toLogin.setTranslateY(230);
 
