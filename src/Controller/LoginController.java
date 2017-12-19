@@ -3,10 +3,7 @@ package Controller;
 import Model.UserPass;
 import Model.UserPassService;
 import Model.UserService;
-import Views.Login;
-import Views.Main;
-import Views.SignUp;
-import Views.Welcome;
+import Views.*;
 import javafx.scene.control.Alert;
 
 import java.util.ArrayList;
@@ -22,10 +19,14 @@ public class LoginController {
     public static void tryLogin() {
         //System.out.println("Trying login...");
 
-        /*String requestedUser = Login.usernameIn.getText();
-        String requestedPassword = Login.passwordIn.getText();
+       // String requestedUser = Login.usernameIn.getText();
+        //String requestedPassword = Login.passwordIn.getText();
+        //String managers = "Manager";
 
-        System.out.println("Trying to log in as " + requestedUser);
+
+            Main.stage.setScene(ManagerWelcome.managerWelcome());
+            //Main.stage.setScene(Welcome.welcome());
+        /*System.out.println("Trying to log in as " + requestedUser);
 
         ArrayList<UserPass> testList = new ArrayList<>();
         UserPassService.selectAll(testList, MainController.usersDatabase);
@@ -43,8 +44,9 @@ public class LoginController {
                     alert.showAndWait();
 
             }*/
-        Main.stage.setScene(Welcome.welcome());
+
         }
+
 
 
     public static void newUser() {

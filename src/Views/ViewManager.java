@@ -20,9 +20,11 @@ public class ViewManager {
         topSection.setTranslateX(0);
         topSection.setTranslateY(-87);
 
-        Label userManager = new Label("Manager");
-        userManager.setTranslateX(2);
-        userManager.setTranslateY(70);
+        Label name = new Label("Manager");
+        name.setTranslateX(2);
+        name.setTranslateY(70);
+
+        topSection.getChildren().setAll(name);
 
         Pane subSection = new Pane();
         //below is what the subsection looks like, this will be repeated in all the views
@@ -31,17 +33,23 @@ public class ViewManager {
         subSection.setTranslateY(80);
         subSection.setStyle("-fx-background-color: Darkgray;");
 
-        Button welcome = new Button("Back");
-        welcome.setPrefSize(90, 31);
-        welcome.setOnAction(ae -> ViewManagerController.toWelcome());
-        welcome.setTranslateX(490);
-        welcome.setTranslateY(230);
+        Button toEdit = new Button("Edit");
+        toEdit.setPrefSize(90, 31);
+        toEdit.setOnAction(ae -> ViewManagerController.toEdit());
+        toEdit.setTranslateX(490);
+        toEdit.setTranslateY(195);
+
+        Button toWelcome = new Button("Back");
+        toWelcome.setPrefSize(90, 31);
+        toWelcome.setOnAction(ae -> ViewManagerController.toWelcome());
+        toWelcome.setTranslateX(490);
+        toWelcome.setTranslateY(230);
 
         Scene viewScene = new Scene(subSection, 586, 350);
 
 
 
-        //subSection.getChildren().
+        subSection.getChildren().setAll(toWelcome, topSection, toEdit);
         return viewScene;
     }
 }

@@ -22,6 +22,12 @@ public class OneItemSelectedManager {
         topSection.setTranslateX(0);
         topSection.setTranslateY(-87);
 
+        Label name = new Label("Manager");
+        name.setTranslateX(2);
+        name.setTranslateY(70);
+
+        topSection.getChildren().setAll(name);
+
         Pane infoBox = new Pane();
         infoBox.setPrefSize(300, 30);
         infoBox.setTranslateX(10);
@@ -72,7 +78,7 @@ public class OneItemSelectedManager {
         toEdit.setTranslateX(212);
         toEdit.setTranslateY(150);
 
-        subSection.getChildren().setAll(viewTxt, infoBox);
+        subSection.getChildren().setAll(viewTxt, infoBox, topSection);
 
         return oneItemSelectedScene;
     }

@@ -21,9 +21,11 @@ public class ViewUsers {
         topSection.setTranslateX(0);
         topSection.setTranslateY(-87);
 
-        Label user = new Label("Manager");
-        user.setTranslateX(2);
-        user.setTranslateY(70);
+        Label name = new Label("Name");
+        name.setTranslateX(2);
+        name.setTranslateY(70);
+
+        topSection.getChildren().setAll(name);
 
         Pane subSection = new Pane();
         //below is what the subsection looks like, this will be repeated in all the views
@@ -41,19 +43,21 @@ public class ViewUsers {
         welcome.setTranslateY(230);
 
         Label itemsView = new Label("View Items");
-        itemsView.setTranslateX(2);
-        itemsView.setTranslateY(70);
+        itemsView.setTranslateX(250);
+        itemsView.setTranslateY(20);
 
         //table with items info
-        /*TableView accountsTable = new TableView();
+        TableView accountsTable = new TableView();
+        accountsTable.setTranslateX(2);
+        accountsTable.setTranslateY(25);
         TableColumn userID = new TableColumn("User ID");
         TableColumn userName = new TableColumn("UserName");
         TableColumn userFN = new TableColumn("First Name");
         TableColumn userLN = new TableColumn("Last Name");
         TableColumn manager = new TableColumn("Manager");
-        TableColumn active = new TableColumn("Active");*/
+        TableColumn active = new TableColumn("Active");
 
-        subSection.getChildren().setAll(welcome, itemsView, topSection);
+        subSection.getChildren().setAll(welcome, itemsView, topSection, accountsTable);
         return viewScene;
     }
 }

@@ -1,7 +1,9 @@
 package Controller;
 
 import Model.*;
+import Views.Edit;
 import Views.Main;
+import Views.ManagerWelcome;
 import Views.Welcome;
 import javafx.scene.control.TableView;
 
@@ -16,7 +18,12 @@ public class ViewManagerController {
     }
     public static void toWelcome(){
 
-        Main.stage.setScene(Welcome.welcome());
+        Main.stage.setScene(ManagerWelcome.managerWelcome());
+
+    }
+    public static void toEdit(){
+
+        Main.stage.setScene(Edit.edit());
 
     }
 

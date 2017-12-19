@@ -13,7 +13,7 @@ public class SettingsManagerController {
     }
     public static void toWelcome(){
 
-        Main.stage.setScene(Welcome.welcome());
+        Main.stage.setScene(ManagerWelcome.managerWelcome());
 
     }
 
