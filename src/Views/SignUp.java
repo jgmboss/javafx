@@ -93,7 +93,7 @@ public class SignUp {
         toLogin.setTranslateX(490);
         toLogin.setTranslateY(230);
 
-        subSection.getChildren().addAll(toLogin, lNameIn, lNameTxt, toLogin2, fNameIn, fNameTxt, passIn2,passTxt2,passIn,passTxt, usernameIn, usernameTxt, signUptxt);
+        subSection.getChildren().addAll(usernameIn,passIn, passIn2, fNameIn, lNameIn, toLogin,  lNameTxt, toLogin2, fNameTxt, passTxt2,passTxt , usernameTxt, signUptxt);
 
         return signUpScene;
     }
