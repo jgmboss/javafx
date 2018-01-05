@@ -1,16 +1,18 @@
 package Views;
 
 import Controller.MainController;
+import Controller.ViewManagerController;
 import Controller.ViewUsersController;
+import Model.Items;
 import Model.Users;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
 public class ViewUsers {
+
+    private static ListView<Items> itemsListView = new ListView<>();
+
 
     public static Scene viewUsers() {
         Main.stage.setTitle("Inventory");
@@ -47,17 +49,9 @@ public class ViewUsers {
         itemsView.setTranslateY(20);
 
         //table with items info
-        TableView accountsTable = new TableView();
-        accountsTable.setTranslateX(2);
-        accountsTable.setTranslateY(25);
-        TableColumn userID = new TableColumn("User ID");
-        TableColumn userName = new TableColumn("UserName");
-        TableColumn userFN = new TableColumn("First Name");
-        TableColumn userLN = new TableColumn("Last Name");
-        TableColumn manager = new TableColumn("Manager");
-        TableColumn active = new TableColumn("Active");
 
-        subSection.getChildren().setAll(welcome, itemsView, topSection, accountsTable);
+
+        subSection.getChildren().setAll(welcome, itemsView, topSection);
         return viewScene;
     }
 }

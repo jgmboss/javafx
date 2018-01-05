@@ -1,13 +1,16 @@
 package Controller;
 
+import Model.Items;
 import Views.Login;
 import Views.Main;
 import Views.SignUp;
 import javafx.scene.control.Alert;
+import Model.ItemsService;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 import static Views.SignUp.*;
 
@@ -22,27 +25,6 @@ public class SignUpController {
         Main.stage.setScene(Login.login());
     }
 
-    /*public static void madeNewAccount(){
-
-        if (passIn == null | passIn2 == null | fNameIn == null | lNameIn == null | usernameIn == null) {
-
-            nullError();
-        }
-        else if(passIn.getText() != passIn2.getText()) {
-            passwordError();
-        }
-        else {
-            //store input into database
-            String inPass = SignUp.passIn.getText();
-            System.out.println(inPass);
-            Main.stage.setScene(Login.login());
-            System.out.println(passwordHasher(inPass));
-            }
-        //else {
-            
-
-        //}
-    }*/
     public static void madeNewAccount() {
         String inPass = passIn.getText();
         String inPass2 = passIn2.getText();
@@ -55,12 +37,32 @@ public class SignUpController {
         }
         else if (inPass.equals(inPass2)){
             System.out.println(passwordHasher(inPass));
-            Main.stage.setScene(Login.login());
+
+            madeNewAccount2();
         }
         else{
             passwordError();
         }
 
+    }
+
+    public static void madeNewAccount2(){
+
+        ArrayList<Items> itemsArrayList = new ArrayList<>();
+        ItemsService.selectAll(itemsArrayList, MainController.itemsDatabase);
+
+        String inPass = passwordHasher(passIn.getText());
+        String inuserName = usernameIn.getText();
+        String inFN = fNameIn.getText();
+        String inLN = lNameIn.getText();
+
+       // if (Items.){
+
+       // }
+        for (Items u: itemsArrayList) {
+            System.out.println(u.getBuyingPrice() + u.getGroups() + u.getItemID() + u.getQuantity() + u.getSellingPrice() + u.getItemDescription() + u.getItemIMG() + u.getItemName());
+            //Main.stage.setScene(Login.login());
+        }
     }
 
     public static void nullError(){

@@ -20,7 +20,6 @@ import java.util.Optional;
 
 
 public class Main extends Application {
-    public static DatabaseConnection database;
 
     public static Stage stage;
 
