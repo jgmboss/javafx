@@ -93,7 +93,14 @@ public class SignUp {
         toLogin.setTranslateX(490);
         toLogin.setTranslateY(230);
 
-        subSection.getChildren().addAll(usernameIn,passIn, passIn2, fNameIn, lNameIn, toLogin,  lNameTxt, toLogin2, fNameTxt, passTxt2,passTxt , usernameTxt, signUptxt);
+        Button addIMG = new Button("Enter Image");
+        addIMG.setPrefSize(162, 31);
+        addIMG.setOnAction((ae) -> SignUpController.addIMG(addIMG));//stage.setScene(Login)); //once clicked, Login scene opens
+        addIMG.setTranslateX(300);
+        addIMG.setTranslateY(192);
+
+
+        subSection.getChildren().addAll(usernameIn,passIn, passIn2, fNameIn, lNameIn, addIMG, toLogin,  lNameTxt, toLogin2, fNameTxt, passTxt2,passTxt , usernameTxt, signUptxt);
 
         return signUpScene;
     }

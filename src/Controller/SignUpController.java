@@ -1,11 +1,13 @@
 package Controller;
 
-import Model.Items;
+import Model.*;
 import Views.Login;
 import Views.Main;
 import Views.SignUp;
 import javafx.scene.control.Alert;
-import Model.ItemsService;
+import javafx.scene.control.Button;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
@@ -37,21 +39,21 @@ public class SignUpController {
         }
         else if (inPass.equals(inPass2)){
             System.out.println(passwordHasher(inPass));
-
-            madeNewAccount2();
+          //  UserPassService.save();
+            Main.stage.setScene(Login.login());
         }
         else{
             passwordError();
         }
-
+        madeNewAccount2();
     }
 
     public static void madeNewAccount2(){
+        UserPassService.save(UserPass, Users);
+        ArrayList<UserPass> userPassArrayList = new ArrayList<>();
+        UserPassService.selectAll(userPassArrayList, MainController.usersDatabase);
 
-        ArrayList<Items> itemsArrayList = new ArrayList<>();
-        ItemsService.selectAll(itemsArrayList, MainController.itemsDatabase);
-
-        String inPass = passwordHasher(passIn.getText());
+         = passwordHasher(passIn.getText());
         String inuserName = usernameIn.getText();
         String inFN = fNameIn.getText();
         String inLN = lNameIn.getText();
@@ -59,8 +61,8 @@ public class SignUpController {
        // if (Items.){
 
        // }
-        for (Items u: itemsArrayList) {
-            System.out.println(u.getBuyingPrice() + u.getGroups() + u.getItemID() + u.getQuantity() + u.getSellingPrice() + u.getItemDescription() + u.getItemIMG() + u.getItemName());
+        for (UserPass u: userPassArrayList) {
+            System.out.println(u.getUserID() + u.getUserUN() + u.getUserPass());
             //Main.stage.setScene(Login.login());
         }
     }
@@ -100,6 +102,13 @@ public class SignUpController {
         } catch (NoSuchAlgorithmException nsae) {
             return nsae.getMessage();
         }
+    }
+    public static void addIMG(Button button) {
+        final FileChooser fileChooser = new FileChooser();
+        button.setOnAction(event -> {
+            Window w
+        });
+
     }
 }
 

@@ -4,12 +4,12 @@ public class UserPass {
 
     private int userID;
     private String userUN;
-    private String userPASS;
+    private String userPass;
 
-    public UserPass(String userUN, int userID, String userPASS) {
+    public UserPass(String userUN, int userID, String userPass) {
         this.userUN = userUN;
         this.userID = userID;
-        this.userPASS = userPASS;
+        this.userPass = userPass;
     }
 
     public int getUserID() {
@@ -28,16 +28,16 @@ public class UserPass {
         this.userUN = userUN;
     }
 
-    public String getUserPASS() {
-        return userPASS;
+    public String getUserPass() {
+        return userPass;
     }
 
-    public void setUserPASS(String userPASS) {
-        this.userPASS = userPASS;
+    public void setUserPass(String userPass) {
+        this.userPass = userPass;
     }
 
     @Override
     public String toString() {
-        return userUN + userPASS;
+        return userUN + userPass;
     }
 }
