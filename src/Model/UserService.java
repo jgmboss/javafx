@@ -8,7 +8,7 @@ import java.util.List;
 public class UserService {
     public static void selectAll(List<Users> targetList, DatabaseConnection userDatabase) {
 
-        PreparedStatement statement = userDatabase.newStatement("SELECT userFN, userSN, userIMG, manager, active, userID FROM Users ORDER BY userID");
+        PreparedStatement statement = userDatabase.newStatement("SELECT userID, userFN, userSN, userIMG, manager, active, userUN, userPass FROM Users ORDER BY userID");
 
         try {
             if (statement != null) {
@@ -17,7 +17,7 @@ public class UserService {
 
                 if (results != null) {
                     while (results.next()) {
-                        targetList.add(new Users (results.getString("userFN"), results.getString("userSN"), results.getString("userIMG"), results.getBoolean("manager"), results.getBoolean("active"),results.getInt("userID")));
+                        targetList.add(new Users (results.getInt("userID"), results.getString("userFN"), results.getString("userSN"), results.getString("userIMG"), results.getBoolean("manager"), results.getBoolean("active"), results.getString("userUN"), results.getString("userPass")));
                     }
                 }
             }
@@ -29,7 +29,7 @@ public class UserService {
 
         Users result = null;
 
-        PreparedStatement statement = UserDatabase.newStatement("SELECT userFN, userIMG, userLN, manager, active, userID FROM Users WHERE itemID = ?");
+        PreparedStatement statement = UserDatabase.newStatement("SELECT userID, userID, userFN, userIMG, userLN, manager, active, userUN, userPass FROM Users WHERE itemID = ?");
 
         try {
             if (statement != null) {
@@ -38,7 +38,7 @@ public class UserService {
                 ResultSet results = UserDatabase.executeQuery(statement);
 
                 if (results != null) {
-                    result = new Users(results.getString("userFN"), results.getString("userIMG"), results.getString("userLN"), results.getBoolean("manager"), results.getBoolean("active"), results.getInt("userID"));
+                    result = new Users(results.getInt("userID"), results.getString("userFN"), results.getString("userSN"), results.getString("userIMG"), results.getBoolean("manager"), results.getBoolean("active"), results.getString("userUN"), results.getString("userPass"));
                 }
             }
         } catch (SQLException resultsException) {
@@ -56,12 +56,14 @@ public class UserService {
 
         try {
             if (existingItem == null) {
-                PreparedStatement statement = database.newStatement("INSERT INTO Users (userFN, userIMG, userLN, manager, active,) VALUES (?, ?, ?, ?, ?))");
+                PreparedStatement statement = database.newStatement("INSERT INTO Users (userFN, userIMG, userLN, manager, active, userUN, userPass) VALUES (?, ?, ?, ?, ?, ?, ?))");
                 statement.setString(1, itemToSave.getUserFN());
                 statement.setString(2, itemToSave.getUserIMG());
                 statement.setString(3, itemToSave.getUserLN());
                 statement.setBoolean(4, itemToSave.getManager());
                 statement.setBoolean(5, itemToSave.getActive());
+                statement.setString(1, itemToSave.getUserUN());
+                statement.setString(2, itemToSave.getUserPass());
                 database.executeUpdate(statement);
             }
             else {

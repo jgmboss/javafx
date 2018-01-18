@@ -49,13 +49,19 @@ public class SignUpController {
     }
 
     public static void madeNewAccount2(){
-        UserPassService.save(UserPass, Users);
+
         ArrayList<UserPass> userPassArrayList = new ArrayList<>();
         UserPassService.selectAll(userPassArrayList, MainController.usersDatabase);
 
-         = passwordHasher(passIn.getText());
-        String inuserName = usernameIn.getText();
-        String inFN = fNameIn.getText();
+        if
+
+        Users newUser = new Users(fNameIn.getText(), "", lNameIn.getText(), false, true, 0);
+        UserService.save(newUser, MainController.usersDatabase);
+
+
+        String passIn = passwordHasher(passIn.getText());
+        String inuserName = ;
+        String inFN = ;
         String inLN = lNameIn.getText();
 
        // if (Items.){
@@ -104,10 +110,10 @@ public class SignUpController {
         }
     }
     public static void addIMG(Button button) {
-        final FileChooser fileChooser = new FileChooser();
+        /*final FileChooser fileChooser = new FileChooser();
         button.setOnAction(event -> {
             Window w
-        });
+        });*/
 
     }
 }

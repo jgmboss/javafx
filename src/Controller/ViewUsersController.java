@@ -2,10 +2,7 @@ package Controller;
 
 import Model.DatabaseConnection;
 import Model.Items;
-import Model.UserPass;
-import Views.Login;
 import Views.Main;
-import Views.ManagerWelcome;
 import Views.Welcome;
 import javafx.scene.control.ListView;
 
