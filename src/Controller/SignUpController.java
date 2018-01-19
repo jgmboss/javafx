@@ -6,15 +6,12 @@ import Views.Main;
 import Views.SignUp;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.stage.FileChooser;
-import javafx.stage.Window;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
-import static Views.SignUp.*;
 
 public class SignUpController {
 
@@ -27,49 +24,36 @@ public class SignUpController {
         Main.stage.setScene(Login.login());
     }
 
-    public static void madeNewAccount() {
-        String inPass = passIn.getText();
-        String inPass2 = passIn2.getText();
-        if (passIn2.getText().isEmpty() || passIn.getText().isEmpty() || fNameIn.getText().isEmpty() || lNameIn.getText().isEmpty() || usernameIn.getText().isEmpty()){
-            nullError();
-        }
-        else if (usernameIn.getText().length() < 5){
-            usernameError();
+    public static void validateAccount() {
 
+        String username = SignUp.usernameIn.getText();
+        String firstname = SignUp.fNameIn.getText();
+        String lastname = SignUp.lNameIn.getText();
+        String inPass = SignUp.passIn.getText();
+        String inPass2 = SignUp.passIn2.getText();
+
+        if (    username.isEmpty() ||
+                firstname.isEmpty() ||
+                lastname.isEmpty() ||
+                inPass.isEmpty() ||
+                inPass2.isEmpty()){
+                    nullError();
+        }
+        else if (username.length() < 5){
+            usernameError();
         }
         else if (inPass.equals(inPass2)){
-            System.out.println(passwordHasher(inPass));
-          //  UserPassService.save();
+
+            String hash = passwordHasher(inPass);
+
+            Users newUser = new Users(0, firstname, "", lastname, false, true, username, hash);
+            UserService.save(newUser, MainController.usersDatabase);
+
             Main.stage.setScene(Login.login());
+
         }
         else{
             passwordError();
-        }
-        madeNewAccount2();
-    }
-
-    public static void madeNewAccount2(){
-
-        ArrayList<UserPass> userPassArrayList = new ArrayList<>();
-        UserPassService.selectAll(userPassArrayList, MainController.usersDatabase);
-
-        if
-
-        Users newUser = new Users(fNameIn.getText(), "", lNameIn.getText(), false, true, 0);
-        UserService.save(newUser, MainController.usersDatabase);
-
-
-        String passIn = passwordHasher(passIn.getText());
-        String inuserName = ;
-        String inFN = ;
-        String inLN = lNameIn.getText();
-
-       // if (Items.){
-
-       // }
-        for (UserPass u: userPassArrayList) {
-            System.out.println(u.getUserID() + u.getUserUN() + u.getUserPass());
-            //Main.stage.setScene(Login.login());
         }
     }
 

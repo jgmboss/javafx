@@ -8,9 +8,8 @@ public class Users {
     private String userLN;
     private Boolean manager;
     private Boolean active;
-private String userUN;
-private String userPass;
-
+    private String userUN;
+    private String userPass;
 
     public Users(int userID, String userFN, String userIMG, String userLN, Boolean manager, Boolean active, String userUN, String userPass) {
         this.userID = userID;

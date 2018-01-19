@@ -1,15 +1,12 @@
 package Views;
 
-import Controller.LoginController;
 import Controller.SignUpController;
-import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 public class SignUp {
 
@@ -83,7 +80,7 @@ public class SignUp {
 
         Button toLogin2 = new Button("Enter");
         toLogin2.setPrefSize(162, 31);
-        toLogin2.setOnAction((ae) -> SignUpController.madeNewAccount());//stage.setScene(Login)); //once clicked, Login scene opens
+        toLogin2.setOnAction((ae) -> SignUpController.validateAccount());//stage.setScene(Login)); //once clicked, Login scene opens
         toLogin2.setTranslateX(212);
         toLogin2.setTranslateY(192);
 

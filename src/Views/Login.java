@@ -70,7 +70,7 @@ public class Login {
         toSignup.setTranslateX(490);
         toSignup.setTranslateY(230);
 
-        subSection.getChildren().addAll(toSignup, toWelcome, pass, passwordIn, usernameIn, userNametxt, loginTxt);
+        subSection.getChildren().addAll( usernameIn, passwordIn, toWelcome, userNametxt, loginTxt, toSignup, pass);
 
         return loginScene;
         //
