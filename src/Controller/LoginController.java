@@ -34,8 +34,8 @@ public class LoginController {
 
             if (u.getUserUN().equals(requestedUser)) {
                 if (u.getUserPass().equals(hash)) {
-
-                 activeCheck();
+                    Main.stage.setScene(ManagerWelcome.managerWelcome());       //LOGIN SUCCESSFUL
+                activeCheck(u.getUserID());
 
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -49,23 +49,26 @@ public class LoginController {
 
         }
     }
-    public static void activeCheck(){
-        if (active = true){
-            managerCheck();
+    public static void activeCheck(int userID){
+        UserService.selectById(userID, MainController.usersDatabase);
+        System.out.println(userID);
+        /*if (currentUser.getActive() == true){
+            managerCheck(currentUser);
         }
         else{
             inactiveError();
-        }
+        }*/
     }
-public static void managerCheck(){
-    if () {
+public static void managerCheck(Users currentUser){
+    if (currentUser.getManager() == true) {
         Main.stage.setScene(ManagerWelcome.managerWelcome());       //LOGIN SUCCESSFUL
     }
         else{
         Main.stage.setScene(Welcome.welcome());
     }
-
 }
+
+
 
     public static void newUser() {
         Main.stage.setScene(SignUp.signUp());

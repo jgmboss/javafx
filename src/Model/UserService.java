@@ -29,7 +29,7 @@ public class UserService {
 
         Users result = null;
 
-        PreparedStatement statement = UserDatabase.newStatement("SELECT userID, userID, userFN, userIMG, userLN, manager, active, userUN, userPass FROM Users WHERE itemID = ?");
+        PreparedStatement statement = UserDatabase.newStatement("SELECT userID, userID, userFN, userIMG, userLN, manager, active, userUN, userPass FROM Users WHERE userID = ?");
 
         try {
             if (statement != null) {
