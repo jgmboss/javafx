@@ -52,7 +52,7 @@ public class LoginController {
     public static void activeCheck(int userID){
         UserService.selectById(userID, MainController.usersDatabase);
         System.out.println(userID);
-        /*if (currentUser.getActive() == true){
+        /*if (userID.getActive() == true){
             managerCheck(currentUser);
         }
         else{

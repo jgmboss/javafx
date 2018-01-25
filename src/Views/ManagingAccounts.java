@@ -1,14 +1,21 @@
 package Views;
 
 import Controller.ManagingAccountsController;
+import Model.DatabaseConnection;
+import Model.UserService;
+import Model.Users;
+import javafx.collections.FXCollections;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+
 
 public class ManagingAccounts {
 
 
-        public static Scene managingAccounts() {
+
+    public static Scene managingAccounts() {
 
             Main.stage.setTitle("Inventory");
             Main.stage.show();
@@ -39,14 +46,54 @@ public class ManagingAccounts {
             toManagerWelcome.setTranslateX(490);
             toManagerWelcome.setTranslateY(230);
 
-            TableView accountsTable = new TableView();
-            accountsTable.setPrefSize(100, 90);
-            TableColumn userID = new TableColumn("User ID");
-            TableColumn userName = new TableColumn("UserName");
-            TableColumn userFN = new TableColumn("First Name");
-            TableColumn userLN = new TableColumn("Last Name");
-            TableColumn manager = new TableColumn("Manager");
-            TableColumn active = new TableColumn("Active");
+//            TableView accountsTable = new TableView();
+//            accountsTable.setPrefSize(100, 90);
+//            TableColumn userID = new TableColumn("User ID");
+//            TableColumn userName = new TableColumn("UserName");
+//            TableColumn userFN = new TableColumn("First Name");
+//            TableColumn userLN = new TableColumn("Last Name");
+//            TableColumn manager = new TableColumn("Manager");
+//            TableColumn active = new TableColumn("Active");
+
+            TableView accountsTable = new TableView<>();
+            accountsTable.setPrefSize(400, 300);
+            accountsTable.setItems(FXCollections.observableArrayList());
+
+            TableColumn userIDColumn = new TableColumn<>("UserID");
+            userIDColumn.setCellValueFactory(new PropertyValueFactory<>("userID"));
+            accountsTable.getColumns().add(userIDColumn);
+
+            TableColumn userNameColumn = new TableColumn<>("UserName");
+            userNameColumn.setCellValueFactory(new PropertyValueFactory<>("UserName"));
+            accountsTable.getColumns().add(userNameColumn);
+
+            TableColumn firstNameColumn = new TableColumn<>("First Name");
+            firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+            accountsTable.getColumns().add(firstNameColumn);
+
+            TableColumn lastNameColumn = new TableColumn<>("Last Name");
+            lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+            accountsTable.getColumns().add(lastNameColumn);
+
+            TableColumn managerColumn = new TableColumn<>("Manager");
+            managerColumn.setCellValueFactory(new PropertyValueFactory<>("anager"));
+            accountsTable.getColumns().add(managerColumn);
+
+            TableColumn activeColumn = new TableColumn<>("Active");
+            activeColumn.setCellValueFactory(new PropertyValueFactory<>("active"));
+            accountsTable.getColumns().add(activeColumn);
+
+            TableColumn emailColumn = new TableColumn<>("Email");
+            emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+            accountsTable.getColumns().add(emailColumn);
+
+
+            TableView tableView = new TableView();
+            String coulmns[] = {
+                    "User ID",
+                    "UserName",
+                    "First Name",
+                    "Last Name"};
 
             //table with accounts and their information
             //labels with column headings

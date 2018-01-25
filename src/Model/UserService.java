@@ -3,12 +3,14 @@ package Model;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {
-    public static void selectAll(List<Users> targetList, DatabaseConnection userDatabase) {
+    public static List<Users> selectAll(DatabaseConnection userDatabase) {
 
         PreparedStatement statement = userDatabase.newStatement("SELECT userID, userFN, userLN, userIMG, manager, active, userUN, userPass FROM Users ORDER BY userID");
+        List<Users> targetList = new ArrayList<>();
 
         try {
             if (statement != null) {
