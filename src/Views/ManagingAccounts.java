@@ -1,5 +1,6 @@
 package Views;
 
+import Controller.MainController;
 import Controller.ManagingAccountsController;
 import Model.DatabaseConnection;
 import Model.UserService;
@@ -46,59 +47,38 @@ public class ManagingAccounts {
             toManagerWelcome.setTranslateX(490);
             toManagerWelcome.setTranslateY(230);
 
-//            TableView accountsTable = new TableView();
-//            accountsTable.setPrefSize(100, 90);
-//            TableColumn userID = new TableColumn("User ID");
-//            TableColumn userName = new TableColumn("UserName");
-//            TableColumn userFN = new TableColumn("First Name");
-//            TableColumn userLN = new TableColumn("Last Name");
-//            TableColumn manager = new TableColumn("Manager");
-//            TableColumn active = new TableColumn("Active");
 
-            TableView accountsTable = new TableView<>();
-            accountsTable.setPrefSize(400, 300);
-            accountsTable.setItems(FXCollections.observableArrayList());
+            TableView<Users> accountsTable = new TableView<>();
+            accountsTable.setPrefSize(415, 270);
 
-            TableColumn userIDColumn = new TableColumn<>("UserID");
+            TableColumn<Users, String> userIDColumn = new TableColumn<>("User ID");
             userIDColumn.setCellValueFactory(new PropertyValueFactory<>("userID"));
             accountsTable.getColumns().add(userIDColumn);
 
-            TableColumn userNameColumn = new TableColumn<>("UserName");
-            userNameColumn.setCellValueFactory(new PropertyValueFactory<>("UserName"));
+            TableColumn<Users, String> userNameColumn = new TableColumn<>("User Name");
+            userNameColumn.setCellValueFactory(new PropertyValueFactory<>("userUN"));
             accountsTable.getColumns().add(userNameColumn);
 
-            TableColumn firstNameColumn = new TableColumn<>("First Name");
-            firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+            TableColumn<Users, String> firstNameColumn = new TableColumn<>("First Name");
+            firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("userFN"));
             accountsTable.getColumns().add(firstNameColumn);
 
-            TableColumn lastNameColumn = new TableColumn<>("Last Name");
-            lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+            TableColumn<Users, String> lastNameColumn = new TableColumn<>("Last Name");
+            lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("userLN"));
             accountsTable.getColumns().add(lastNameColumn);
 
-            TableColumn managerColumn = new TableColumn<>("Manager");
-            managerColumn.setCellValueFactory(new PropertyValueFactory<>("anager"));
+            TableColumn<Users, String> managerColumn = new TableColumn<>("Manager");
+            managerColumn.setCellValueFactory(new PropertyValueFactory<>("manager"));
             accountsTable.getColumns().add(managerColumn);
 
-            TableColumn activeColumn = new TableColumn<>("Active");
+            TableColumn<Users, String> activeColumn = new TableColumn<>("Active");
             activeColumn.setCellValueFactory(new PropertyValueFactory<>("active"));
             accountsTable.getColumns().add(activeColumn);
 
-            TableColumn emailColumn = new TableColumn<>("Email");
-            emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
-            accountsTable.getColumns().add(emailColumn);
 
+            accountsTable.setItems(FXCollections.observableArrayList(UserService.selectAll(MainController.usersDatabase)));
 
-            TableView tableView = new TableView();
-            String coulmns[] = {
-                    "User ID",
-                    "UserName",
-                    "First Name",
-                    "Last Name"};
-
-            //table with accounts and their information
-            //labels with column headings
-            // connect to users table
-            // button to go back to manager welcome
+//
             subSection.getChildren().setAll(accountsTable, toManagerWelcome, topSection);
             return managingAccountsScene;
         }

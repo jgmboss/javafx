@@ -1,9 +1,8 @@
 package Controller;
 
-import Views.Login;
-import Views.Main;
-import Views.Settings;
-import Views.ViewUsers;
+import Model.UserService;
+import Model.Users;
+import Views.*;
 
 public class WelcomeController {
 
@@ -30,4 +29,5 @@ public class WelcomeController {
         Main.stage.setScene(Login.login());
 
     }
+
 }

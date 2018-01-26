@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {
-    public static List<Users> selectAll(DatabaseConnection userDatabase) {
+    public static ArrayList<Users> selectAll(DatabaseConnection userDatabase) {
 
         PreparedStatement statement = userDatabase.newStatement("SELECT userID, userFN, userLN, userIMG, manager, active, userUN, userPass FROM Users ORDER BY userID");
-        List<Users> targetList = new ArrayList<>();
+        ArrayList<Users> resultsList = new ArrayList<>();
 
         try {
             if (statement != null) {
@@ -19,13 +19,16 @@ public class UserService {
 
                 if (results != null) {
                     while (results.next()) {
-                        targetList.add(new Users (results.getInt("userID"), results.getString("userFN"), results.getString("userLN"), results.getString("userIMG"), results.getBoolean("manager"), results.getBoolean("active"), results.getString("userUN"), results.getString("userPass")));
+                        resultsList.add(new Users (results.getInt("userID"), results.getString("userFN"), results.getString("userLN"), results.getString("userIMG"), results.getBoolean("manager"), results.getBoolean("active"), results.getString("userUN"), results.getString("userPass")));
                     }
                 }
             }
         } catch (SQLException resultsException) {
             System.out.println("Database select all error: " + resultsException.getMessage());
         }
+
+        return resultsList;
+
     }
     public static Users selectById(int id, DatabaseConnection UserDatabase) {
 
@@ -62,8 +65,8 @@ public class UserService {
                 statement.setString(1, itemToSave.getUserFN());
                 statement.setString(2, itemToSave.getUserIMG());
                 statement.setString(3, itemToSave.getUserLN());
-                statement.setBoolean(4, itemToSave.getManager());
-                statement.setBoolean(5, itemToSave.getActive());
+                statement.setBoolean(4, itemToSave.isManager());
+                statement.setBoolean(5, itemToSave.isActive());
                 statement.setString(6, itemToSave.getUserUN());
                 statement.setString(7, itemToSave.getUserPass());
                 database.executeUpdate(statement);
@@ -73,8 +76,8 @@ public class UserService {
                 statement.setString(1, itemToSave.getUserFN());
                 statement.setString(2, itemToSave.getUserIMG());
                 statement.setString(3, itemToSave.getUserLN());
-                statement.setBoolean(4, itemToSave.getManager());
-                statement.setBoolean(5, itemToSave.getActive());
+                statement.setBoolean(4, itemToSave.isManager());
+                statement.setBoolean(5, itemToSave.isActive());
                 statement.setString(6, itemToSave.getUserUN());
                 statement.setString(7, itemToSave.getUserPass());
                 statement.setInt(8, itemToSave.getUserID());

@@ -4,9 +4,12 @@ import Controller.MainController;
 import Controller.ViewManagerController;
 import Controller.ViewUsersController;
 import Model.Items;
+import Model.UserService;
 import Model.Users;
+import javafx.collections.FXCollections;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
 public class ViewUsers {
@@ -37,6 +40,36 @@ public class ViewUsers {
         subSection.setStyle("-fx-background-color: Darkgray;");
 
         Scene viewScene = new Scene(subSection, 586, 350);
+
+//        TableView<Items> accountsTable = new TableView<>();
+//        accountsTable.setPrefSize(415, 270);
+//
+//        TableColumn<Users, String> userIDColumn = new TableColumn<>("User ID");
+//        userIDColumn.setCellValueFactory(new PropertyValueFactory<>("userID"));
+//        accountsTable.getColumns().add(userIDColumn);
+//
+//        TableColumn<Users, String> userNameColumn = new TableColumn<>("User Name");
+//        userNameColumn.setCellValueFactory(new PropertyValueFactory<>("userUN"));
+//        accountsTable.getColumns().add(userNameColumn);
+//
+//        TableColumn<Users, String> firstNameColumn = new TableColumn<>("First Name");
+//        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("userFN"));
+//        accountsTable.getColumns().add(firstNameColumn);
+//
+//        TableColumn<Users, String> lastNameColumn = new TableColumn<>("Last Name");
+//        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("userLN"));
+//        accountsTable.getColumns().add(lastNameColumn);
+//
+//        TableColumn<Users, String> managerColumn = new TableColumn<>("Manager");
+//        managerColumn.setCellValueFactory(new PropertyValueFactory<>("manager"));
+//        accountsTable.getColumns().add(managerColumn);
+//
+//        TableColumn<Users, String> activeColumn = new TableColumn<>("Active");
+//        activeColumn.setCellValueFactory(new PropertyValueFactory<>("active"));
+//        accountsTable.getColumns().add(activeColumn);
+//
+//
+//        accountsTable.setItems(FXCollections.observableArrayList(UserService.selectAll(MainController.usersDatabase)));
 
         Button welcome = new Button("Back");
         welcome.setPrefSize(90, 31);

@@ -3,12 +3,13 @@ package Controller;
 import Model.UserService;
 import Model.Users;
 import Views.*;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.Alert;
 
 import java.util.ArrayList;
 
 public class LoginController {
-
+public static String currentUserFN;
     public static void Temp() {
 
         System.out.println("It works!");
@@ -27,15 +28,17 @@ public class LoginController {
         //Main.stage.setScene(Welcome.welcome());
         System.out.println("Trying to log in as " + requestedUser + " with password hash " + hash);
 
-        ArrayList<Users> userList = new ArrayList<>();
-        UserService.selectAll(userList, MainController.usersDatabase);
+        ArrayList<Users> userList = UserService.selectAll(MainController.usersDatabase);
 
         for (Users u : userList) {
 
+            System.out.println("Testing user " + u.getUserUN() + " with hash " + u.getUserPass());
+
             if (u.getUserUN().equals(requestedUser)) {
+
                 if (u.getUserPass().equals(hash)) {
                     Main.stage.setScene(ManagerWelcome.managerWelcome());       //LOGIN SUCCESSFUL
-                activeCheck(u.getUserID());
+                    activeCheck(u.getUserID());
 
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -50,23 +53,24 @@ public class LoginController {
         }
     }
     public static void activeCheck(int userID){
-        UserService.selectById(userID, MainController.usersDatabase);
+        Users user = UserService.selectById(userID, MainController.usersDatabase);
         System.out.println(userID);
-        /*if (userID.getActive() == true){
-            managerCheck(currentUser);
+        if (user.isActive()) {
+            managerCheck(user);
+            currentUserFN = user.getUserFN();
         }
-        else{
+        else {
             inactiveError();
-        }*/
+        }
     }
-public static void managerCheck(Users currentUser){
-    if (currentUser.getManager() == true) {
-        Main.stage.setScene(ManagerWelcome.managerWelcome());       //LOGIN SUCCESSFUL
+
+    public static void managerCheck(Users currentUser) {
+        if (currentUser.isManager()) {
+            Main.stage.setScene(ManagerWelcome.managerWelcome());       //LOGIN SUCCESSFUL
+        } else {
+            Main.stage.setScene(Welcome.welcome());
+        }
     }
-        else{
-        Main.stage.setScene(Welcome.welcome());
-    }
-}
 
 
 

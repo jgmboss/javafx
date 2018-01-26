@@ -15,17 +15,28 @@ public class Users {
     private final SimpleStringProperty userUN;
     private final SimpleStringProperty userPass;
 
-    public Users(SimpleIntegerProperty userID, SimpleStringProperty userFN, SimpleStringProperty userIMG, SimpleStringProperty userLN, SimpleBooleanProperty manager, SimpleBooleanProperty active, SimpleStringProperty userUN, SimpleStringProperty userPass) {
-        this.userID = userID;
-        this.userFN = userFN;
-        this.userIMG = userIMG;
-        this.userLN = userLN;
-        this.manager = manager;
-        this.active = active;
-        this.userUN = userUN;
-        this.userPass = userPass;
+    public Users(int userID, String userFN, String userIMG, String userLN, boolean manager, boolean active, String userUN, String userPass) {
+        this.userID = new SimpleIntegerProperty(userID);
+        this.userFN =  new SimpleStringProperty(userFN);
+        this.userIMG = new SimpleStringProperty(userIMG);
+        this.userLN =  new SimpleStringProperty(userLN);
+        this.manager =  new SimpleBooleanProperty(manager);
+        this.active =  new SimpleBooleanProperty(active);
+        this.userUN =  new SimpleStringProperty(userUN);
+        this.userPass =  new SimpleStringProperty(userPass);
     }
 
+    public int getUserID() {
+        return userID.get();
+    }
+
+    public SimpleIntegerProperty userIDProperty() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID.set(userID);
+    }
 
     public String getUserFN() {
         return userFN.get();
@@ -109,10 +120,6 @@ public class Users {
 
     public void setUserPass(String userPass) {
         this.userPass.set(userPass);
-    }
-
-    public SimpleIntegerProperty userIDProperty() {
-        return userID;
     }
 
     @Override

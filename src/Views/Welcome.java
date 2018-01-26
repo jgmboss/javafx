@@ -19,7 +19,9 @@ public class Welcome {
         topSection.setTranslateX(0);
         topSection.setTranslateY(-87);
 
-        Label name = new Label("Name");
+        System.out.println(LoginController.currentUserFN);
+
+        Label name = new Label(LoginController.currentUserFN);
         name.setTranslateX(2);
         name.setTranslateY(70);
 
