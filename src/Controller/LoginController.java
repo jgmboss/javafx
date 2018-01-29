@@ -58,6 +58,7 @@ public static String currentUserFN;
         if (user.isActive()) {
             managerCheck(user);
             currentUserFN = user.getUserFN();
+            System.out.println(currentUserFN);
         }
         else {
             inactiveError();

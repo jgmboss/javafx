@@ -19,9 +19,10 @@ public class Welcome {
         topSection.setTranslateX(0);
         topSection.setTranslateY(-87);
 
-        System.out.println(LoginController.currentUserFN);
+        String currentUser = LoginController.currentUserFN;
+        System.out.println(currentUser);
 
-        Label name = new Label(LoginController.currentUserFN);
+        Label name = new Label(currentUser);
         name.setTranslateX(2);
         name.setTranslateY(70);
 
