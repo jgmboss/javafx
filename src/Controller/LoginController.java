@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class LoginController {
 public static String currentUserFN;
+    public static String currentUserLN;
     public static void Temp() {
 
         System.out.println("It works!");
@@ -37,6 +38,7 @@ public static String currentUserFN;
             if (u.getUserUN().equals(requestedUser)) {
 
                 if (u.getUserPass().equals(hash)) {
+                    System.out.println(u);
                     Main.stage.setScene(ManagerWelcome.managerWelcome());       //LOGIN SUCCESSFUL
                     activeCheck(u.getUserID());
 
@@ -56,9 +58,11 @@ public static String currentUserFN;
         Users user = UserService.selectById(userID, MainController.usersDatabase);
         System.out.println(userID);
         if (user.isActive()) {
-            managerCheck(user);
             currentUserFN = user.getUserFN();
+            currentUserLN = user.getUserLN();
             System.out.println(currentUserFN);
+            System.out.println(currentUserLN);
+            managerCheck(user);
         }
         else {
             inactiveError();

@@ -8,18 +8,18 @@ public class Users {
 
     private SimpleIntegerProperty userID;
     private final SimpleStringProperty userFN;
-    private final SimpleStringProperty userIMG;
     private final SimpleStringProperty userLN;
+    private final SimpleStringProperty userIMG;
     private final SimpleBooleanProperty manager;
     private final SimpleBooleanProperty active;
     private final SimpleStringProperty userUN;
     private final SimpleStringProperty userPass;
 
-    public Users(int userID, String userFN, String userIMG, String userLN, boolean manager, boolean active, String userUN, String userPass) {
+    public Users(int userID, String userFN, String userLN, String userIMG, boolean manager, boolean active, String userUN, String userPass) {
         this.userID = new SimpleIntegerProperty(userID);
         this.userFN =  new SimpleStringProperty(userFN);
-        this.userIMG = new SimpleStringProperty(userIMG);
         this.userLN =  new SimpleStringProperty(userLN);
+        this.userIMG = new SimpleStringProperty(userIMG);
         this.manager =  new SimpleBooleanProperty(manager);
         this.active =  new SimpleBooleanProperty(active);
         this.userUN =  new SimpleStringProperty(userUN);
@@ -124,7 +124,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return userFN +" " + userIMG +" " + userLN +" "+ userUN + " "+userPass;
+        return userFN +" " + userLN + " "+ userIMG +" "+ userUN + " "+userPass;
     }
 }
 

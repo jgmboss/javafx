@@ -46,7 +46,7 @@ public class SignUpController {
 
             String hash = passwordHasher(inPass);
 
-            Users newUser = new Users(0, firstname, "", lastname, false, true, username, hash);
+            Users newUser = new Users(0, firstname, lastname, "", false, true, username, hash);
             UserService.save(newUser, MainController.usersDatabase);
 
             Main.stage.setScene(Login.login());

@@ -34,7 +34,7 @@ public class UserService {
 
         Users result = null;
 
-        PreparedStatement statement = UserDatabase.newStatement("SELECT userID, userID, userFN, userIMG, userLN, manager, active, userUN, userPass FROM Users WHERE userID = ?");
+        PreparedStatement statement = UserDatabase.newStatement("SELECT userID, userFN, userLN, userIMG, manager, active, userUN, userPass FROM Users WHERE userID = ?");
 
         try {
             if (statement != null) {
@@ -61,10 +61,10 @@ public class UserService {
 
         try {
             if (existingItem == null) {
-                PreparedStatement statement = database.newStatement("INSERT INTO Users (userFN, userIMG, userLN, manager, active, userUN, userPass) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                PreparedStatement statement = database.newStatement("INSERT INTO Users (userFN, userLN, userIMG, manager, active, userUN, userPass) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 statement.setString(1, itemToSave.getUserFN());
-                statement.setString(2, itemToSave.getUserIMG());
-                statement.setString(3, itemToSave.getUserLN());
+                statement.setString(2, itemToSave.getUserLN());
+                statement.setString(3, itemToSave.getUserIMG());
                 statement.setBoolean(4, itemToSave.isManager());
                 statement.setBoolean(5, itemToSave.isActive());
                 statement.setString(6, itemToSave.getUserUN());
@@ -72,10 +72,10 @@ public class UserService {
                 database.executeUpdate(statement);
             }
             else {
-                PreparedStatement statement = database.newStatement("UPDATE Table SET userFN = ?, userIMG = ?, userLN = ?, manager = ?, active = ?, userUN = ?, userPass = ? WHERE userID = ?");
+                PreparedStatement statement = database.newStatement("UPDATE Table SET userFN = ?, userLN = ?, userIMG = ?, manager = ?, active = ?, userUN = ?, userPass = ? WHERE userID = ?");
                 statement.setString(1, itemToSave.getUserFN());
-                statement.setString(2, itemToSave.getUserIMG());
-                statement.setString(3, itemToSave.getUserLN());
+                statement.setString(2, itemToSave.getUserLN());
+                statement.setString(3, itemToSave.getUserIMG());
                 statement.setBoolean(4, itemToSave.isManager());
                 statement.setBoolean(5, itemToSave.isActive());
                 statement.setString(6, itemToSave.getUserUN());

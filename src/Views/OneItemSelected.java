@@ -25,7 +25,10 @@ public class OneItemSelected {
         topSection.setTranslateX(0);
         topSection.setTranslateY(-87);
 
-        Label name = new Label("Name");
+        String currentUser = LoginController.currentUserFN;
+        System.out.println(currentUser);
+
+        Label name = new Label(currentUser);
         name.setTranslateX(2);
         name.setTranslateY(70);
 
