@@ -50,4 +50,37 @@ public class ItemsService {
 
 
     }
+    public static void save(Items itemToSave, DatabaseConnection database) {
+
+        Items existingItem = null;
+        if (itemToSave.getItemID() != 0) existingItem = selectById(itemToSave.getItemID(), database);
+
+        try {
+            if (existingItem == null) {
+                PreparedStatement statement = database.newStatement("INSERT INTO Items (userFN, userLN, userIMG, manager, active, userUN, userPass) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                statement.setString(1, itemToSave.getUserFN());
+                statement.setString(2, itemToSave.getUserLN());
+                statement.setString(3, itemToSave.getUserIMG());
+                statement.setBoolean(4, itemToSave.isManager());
+                statement.setBoolean(5, itemToSave.isActive());
+                statement.setString(6, itemToSave.getUserUN());
+                statement.setString(7, itemToSave.getUserPass());
+                database.executeUpdate(statement);
+            }
+            else {
+                PreparedStatement statement = database.newStatement("UPDATE Table SET userFN = ?, userLN = ?, userIMG = ?, manager = ?, active = ?, userUN = ?, userPass = ? WHERE userID = ?");
+                statement.setString(1, itemToSave.getUserFN());
+                statement.setString(2, itemToSave.getUserLN());
+                statement.setString(3, itemToSave.getUserIMG());
+                statement.setBoolean(4, itemToSave.isManager());
+                statement.setBoolean(5, itemToSave.isActive());
+                statement.setString(6, itemToSave.getUserUN());
+                statement.setString(7, itemToSave.getUserPass());
+                statement.setInt(8, itemToSave.getUserID());
+                database.executeUpdate(statement);
+            }
+        } catch (SQLException resultsException) {
+            System.out.println("Database saving error: " + resultsException.getMessage());
+        }
+    }
 }

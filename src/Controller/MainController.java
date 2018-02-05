@@ -14,7 +14,7 @@ public class MainController {
     public static DatabaseConnection itemsDatabase;
     public static DatabaseConnection usersDatabase;
 
-    public static void Temp (){
+    public static void Temp (){ //used for testing the buttons/ connection between the view class and controller class
 
         System.out.println("It works!");
 
@@ -42,6 +42,7 @@ public class MainController {
 
     public static void gotoLoginScreen() {
         Main.stage.setScene(Login.login());
+        initiateDatabases();
     }
 
 
