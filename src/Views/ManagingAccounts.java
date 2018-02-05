@@ -49,7 +49,7 @@ public class ManagingAccounts {
 
 
             TableView<Users> accountsTable = new TableView<>();
-            accountsTable.setPrefSize(415, 270);
+            accountsTable.setPrefSize(440, 270);
 
             TableColumn<Users, String> userIDColumn = new TableColumn<>("User ID");
             userIDColumn.setCellValueFactory(new PropertyValueFactory<>("userID"));

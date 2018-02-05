@@ -71,6 +71,7 @@ public class UserService {
                 statement.setString(7, itemToSave.getUserPass());
                 database.executeUpdate(statement);
             }
+
             else {
                 PreparedStatement statement = database.newStatement("UPDATE Table SET userFN = ?, userLN = ?, userIMG = ?, manager = ?, active = ?, userUN = ?, userPass = ? WHERE userID = ?");
                 statement.setString(1, itemToSave.getUserFN());

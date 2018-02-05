@@ -5,6 +5,7 @@ import Controller.MainController;
 import Controller.ViewManagerController;
 import Controller.ViewUsersController;
 import Model.Items;
+import Model.ItemsService;
 import Model.UserService;
 import Model.Users;
 import javafx.collections.FXCollections;
@@ -45,35 +46,43 @@ public class ViewUsers {
 
         Scene viewScene = new Scene(subSection, 586, 350);
 
-//        TableView<Items> accountsTable = new TableView<>();
-//        accountsTable.setPrefSize(415, 270);
-//
-//        TableColumn<Users, String> userIDColumn = new TableColumn<>("User ID");
-//        userIDColumn.setCellValueFactory(new PropertyValueFactory<>("userID"));
-//        accountsTable.getColumns().add(userIDColumn);
-//
-//        TableColumn<Users, String> userNameColumn = new TableColumn<>("User Name");
-//        userNameColumn.setCellValueFactory(new PropertyValueFactory<>("userUN"));
-//        accountsTable.getColumns().add(userNameColumn);
-//
-//        TableColumn<Users, String> firstNameColumn = new TableColumn<>("First Name");
-//        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("userFN"));
-//        accountsTable.getColumns().add(firstNameColumn);
-//
-//        TableColumn<Users, String> lastNameColumn = new TableColumn<>("Last Name");
-//        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("userLN"));
-//        accountsTable.getColumns().add(lastNameColumn);
-//
-//        TableColumn<Users, String> managerColumn = new TableColumn<>("Manager");
-//        managerColumn.setCellValueFactory(new PropertyValueFactory<>("manager"));
-//        accountsTable.getColumns().add(managerColumn);
-//
-//        TableColumn<Users, String> activeColumn = new TableColumn<>("Active");
-//        activeColumn.setCellValueFactory(new PropertyValueFactory<>("active"));
-//        accountsTable.getColumns().add(activeColumn);
-//
-//
-//        accountsTable.setItems(FXCollections.observableArrayList(UserService.selectAll(MainController.usersDatabase)));
+        TableView<Items> itemsTableView = new TableView<>();
+        itemsTableView.setPrefSize(440, 270);
+
+        TableColumn<Items, String> itemIDColumn = new TableColumn<>("Item ID");
+        itemIDColumn.setCellValueFactory(new PropertyValueFactory<>("itemID"));
+        itemsTableView.getColumns().add(itemIDColumn);
+
+        TableColumn<Items, String> itemNameColumn = new TableColumn<>("Item");
+        itemNameColumn.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        itemsTableView.getColumns().add(itemNameColumn);
+
+        TableColumn<Items, String> itemDescriptionColumn = new TableColumn<>("Description");
+        itemDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("itemDescription"));
+        itemsTableView.getColumns().add(itemDescriptionColumn);
+
+        TableColumn<Items, String> sellingPriceColumn = new TableColumn<>("Selling Price");
+        sellingPriceColumn.setCellValueFactory(new PropertyValueFactory<>("sellingPrice"));
+        itemsTableView.getColumns().add(sellingPriceColumn);
+
+        TableColumn<Items, String> buyingPriceColumn = new TableColumn<>("Buying Price");
+        buyingPriceColumn.setCellValueFactory(new PropertyValueFactory<>("buyingPrice"));
+        itemsTableView.getColumns().add(buyingPriceColumn);
+
+        TableColumn<Items, String> groupColumn = new TableColumn<>("Group");
+        groupColumn.setCellValueFactory(new PropertyValueFactory<>("groups"));
+        itemsTableView.getColumns().add(groupColumn);
+
+        TableColumn<Items, String> quantityColumn = new TableColumn<>("Quantity");
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        itemsTableView.getColumns().add(quantityColumn);
+
+        TableColumn<Items, String> itemIMGColumn = new TableColumn<>("itemIMG");
+        itemIMGColumn.setCellValueFactory(new PropertyValueFactory<>("itemIMG"));
+        itemsTableView.getColumns().add(itemIMGColumn);
+
+
+        itemsTableView.setItems(FXCollections.observableArrayList(ItemsService.selectAll(MainController.itemsDatabase)));
 
         Button welcome = new Button("Back");
         welcome.setPrefSize(90, 31);

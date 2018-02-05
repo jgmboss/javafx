@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ItemsService {
-    public static void selectAll(List<Items> targetList, DatabaseConnection itemsDatabase) {
+    public static void selectAll(DatabaseConnection itemsDatabase) {
 
-        PreparedStatement statement = itemsDatabase.newStatement("SELECT ItemID, ItemIMG, ItemName, ItemDescription, SellingPrice, BuyingPrice, Groups, Quantity, ItemIMG FROM Items ORDER BY ItemID");
+        PreparedStatement statement = itemsDatabase.newStatement("SELECT ItemID, ItemName, ItemDescription, SellingPrice, BuyingPrice, Groups, Quantity, ItemIMG FROM Items ORDER BY ItemID");
 
         try {
             if (statement != null) {
@@ -30,7 +30,7 @@ public class ItemsService {
 
         Items result = null;
 
-        PreparedStatement statement = itemDatabase.newStatement("SELECT itemID, itemName, ItemDescription, sellingPrice, buyingPrice, groups, quantity, itemIMG FROM Table WHERE itemID = ?");
+        PreparedStatement statement = itemDatabase.newStatement("SELECT itemID, itemName, itemDescription, sellingPrice, buyingPrice, groups, quantity, itemIMG FROM Table WHERE itemID = ?");
 
         try {
             if (statement != null) {
@@ -57,26 +57,27 @@ public class ItemsService {
 
         try {
             if (existingItem == null) {
-                PreparedStatement statement = database.newStatement("INSERT INTO Items (userFN, userLN, userIMG, manager, active, userUN, userPass) VALUES (?, ?, ?, ?, ?, ?, ?)");
-                statement.setString(1, itemToSave.getUserFN());
-                statement.setString(2, itemToSave.getUserLN());
-                statement.setString(3, itemToSave.getUserIMG());
-                statement.setBoolean(4, itemToSave.isManager());
-                statement.setBoolean(5, itemToSave.isActive());
-                statement.setString(6, itemToSave.getUserUN());
-                statement.setString(7, itemToSave.getUserPass());
+                PreparedStatement statement = database.newStatement("INSERT INTO Items (itemName, itemDescription, sellingPrice, buyingPrice, groups, quantity, itemIMG) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                statement.setString(1, itemToSave.getItemName());
+                statement.setString(2, itemToSave.getItemDescription());
+                statement.setDouble(3, itemToSave.getSellingPrice());
+                statement.setDouble(4, itemToSave.getBuyingPrice());
+                statement.setString(5, itemToSave.getGroups());
+                statement.setInt(6, itemToSave.getQuantity());
+                statement.setString(7, itemToSave.getItemIMG());
                 database.executeUpdate(statement);
             }
             else {
-                PreparedStatement statement = database.newStatement("UPDATE Table SET userFN = ?, userLN = ?, userIMG = ?, manager = ?, active = ?, userUN = ?, userPass = ? WHERE userID = ?");
-                statement.setString(1, itemToSave.getUserFN());
-                statement.setString(2, itemToSave.getUserLN());
-                statement.setString(3, itemToSave.getUserIMG());
-                statement.setBoolean(4, itemToSave.isManager());
-                statement.setBoolean(5, itemToSave.isActive());
-                statement.setString(6, itemToSave.getUserUN());
-                statement.setString(7, itemToSave.getUserPass());
-                statement.setInt(8, itemToSave.getUserID());
+                PreparedStatement statement = database.newStatement("UPDATE Table SET itemName = ?, itemDescription = ?, sellingPrice = ?, buyingPrice = ?, groups = ?, quantity = ?, itemIMG = ? WHERE itemID = ?");
+                statement.setString(1, itemToSave.getItemName());
+                statement.setString(2, itemToSave.getItemDescription());
+                statement.setDouble(3, itemToSave.getSellingPrice());
+                statement.setDouble(4, itemToSave.getBuyingPrice());
+                statement.setString(5, itemToSave.getGroups());
+                statement.setInt(6, itemToSave.getQuantity());
+                statement.setString(7, itemToSave.getItemIMG());
+                statement.setInt(8, itemToSave.getItemID());
+
                 database.executeUpdate(statement);
             }
         } catch (SQLException resultsException) {
