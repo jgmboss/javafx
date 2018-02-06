@@ -57,9 +57,6 @@ public class ViewUsers {
         itemNameColumn.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         itemsTableView.getColumns().add(itemNameColumn);
 
-        TableColumn<Items, String> itemDescriptionColumn = new TableColumn<>("Description");
-        itemDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("itemDescription"));
-        itemsTableView.getColumns().add(itemDescriptionColumn);
 
         TableColumn<Items, String> sellingPriceColumn = new TableColumn<>("Selling Price");
         sellingPriceColumn.setCellValueFactory(new PropertyValueFactory<>("sellingPrice"));
@@ -97,7 +94,7 @@ public class ViewUsers {
         //table with items info
 
 
-        subSection.getChildren().setAll(welcome, itemsView, topSection);
+        subSection.getChildren().setAll(welcome, itemsView, topSection,itemsTableView);
         return viewScene;
     }
 }

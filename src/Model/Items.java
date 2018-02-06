@@ -21,14 +21,6 @@ public class Items {
     private SimpleIntegerProperty quantity;
     private final SimpleStringProperty itemIMG;
 
-   /* private int
-    private String
-    private String
-    private double
-    private double
-    private String
-    private int quantity;
-    private String*/
 
     public Items(int itemID, String itemName, String itemDescription, Double sellingPrice, Double buyingPrice, String groups, int quantity, String itemIMG) {
         this.itemID = new SimpleIntegerProperty(itemID);

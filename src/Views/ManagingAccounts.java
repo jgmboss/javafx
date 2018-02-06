@@ -5,6 +5,7 @@ import Controller.ManagingAccountsController;
 import Model.DatabaseConnection;
 import Model.UserService;
 import Model.Users;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -67,7 +68,7 @@ public class ManagingAccounts {
             lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("userLN"));
             accountsTable.getColumns().add(lastNameColumn);
 
-            TableColumn<Users, String> managerColumn = new TableColumn<>("Manager");
+            TableColumn<Users, Boolean> managerColumn = new TableColumn<>("Manager");
             managerColumn.setCellValueFactory(new PropertyValueFactory<>("manager"));
             accountsTable.getColumns().add(managerColumn);
 

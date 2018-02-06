@@ -3,12 +3,16 @@ package Model;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import static Controller.MainController.itemsDatabase;
+
 public class ItemsService {
-    public static void selectAll(DatabaseConnection itemsDatabase) {
+        public static ArrayList<Items> selectAll(DatabaseConnection iteamsDatabase) {
 
         PreparedStatement statement = itemsDatabase.newStatement("SELECT ItemID, ItemName, ItemDescription, SellingPrice, BuyingPrice, Groups, Quantity, ItemIMG FROM Items ORDER BY ItemID");
+        ArrayList<Items> resultsList = new ArrayList<>();
 
         try {
             if (statement != null) {
@@ -17,14 +21,17 @@ public class ItemsService {
 
                 if (results != null) {
                     while (results.next()) {
-                        targetList.add(new Items(results.getInt("ItemID"), results.getString("ItemName"), results.getString("ItemDescription"), results.getDouble("SellingPrice"), results.getDouble("BuyingPrice"), results.getString("Groups"), results.getInt("Quantity"), results.getString("itemIMG")));
+                        resultsList.add(new Items(results.getInt("ItemID"), results.getString("ItemName"), results.getString("ItemDescription"), results.getDouble("SellingPrice"), results.getDouble("BuyingPrice"), results.getString("Groups"), results.getInt("Quantity"), results.getString("itemIMG")));
                     }
                 }
             }
         } catch (SQLException resultsException) {
             System.out.println("Database select all error: " + resultsException.getMessage());
         }
+
+        return resultsList;
     }
+
 
     public static Items selectById(int id, DatabaseConnection itemDatabase) {
 

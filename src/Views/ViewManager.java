@@ -1,11 +1,15 @@
 package Views;
 
+import Controller.MainController;
 import Controller.ViewManagerController;
 import Controller.ViewUsersController;
+import Model.Items;
+import Model.ItemsService;
+import Model.Users;
+import javafx.collections.FXCollections;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
 public class ViewManager {
@@ -47,9 +51,40 @@ public class ViewManager {
 
         Scene viewScene = new Scene(subSection, 586, 350);
 
+        TableView<Items> itemsTableView = new TableView<>();
+        itemsTableView.setPrefSize(460, 270);
 
+        TableColumn<Items, String> itemIDColumn = new TableColumn<>("Item ID");
+        itemIDColumn.setCellValueFactory(new PropertyValueFactory<>("itemID"));
+        itemsTableView.getColumns().add(itemIDColumn);
 
-        subSection.getChildren().setAll(toWelcome, topSection, toEdit);
+        TableColumn<Items, String> itemNameColumn = new TableColumn<>("Item");
+        itemNameColumn.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        itemsTableView.getColumns().add(itemNameColumn);
+
+        TableColumn<Items, String> sellingPriceColumn = new TableColumn<>("Selling Price");
+        sellingPriceColumn.setCellValueFactory(new PropertyValueFactory<>("sellingPrice"));
+        itemsTableView.getColumns().add(sellingPriceColumn);
+
+        TableColumn<Items, String> buyingPriceColumn = new TableColumn<>("Buying Price");
+        buyingPriceColumn.setCellValueFactory(new PropertyValueFactory<>("buyingPrice"));
+        itemsTableView.getColumns().add(buyingPriceColumn);
+
+        TableColumn<Items, String> groupColumn = new TableColumn<>("Group");
+        groupColumn.setCellValueFactory(new PropertyValueFactory<>("groups"));
+        itemsTableView.getColumns().add(groupColumn);
+
+        TableColumn<Items, String> quantityColumn = new TableColumn<>("Quantity");
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        itemsTableView.getColumns().add(quantityColumn);
+
+        TableColumn<Items, String> itemIMGColumn = new TableColumn<>("itemIMG");
+        itemIMGColumn.setCellValueFactory(new PropertyValueFactory<>("itemIMG"));
+        itemsTableView.getColumns().add(itemIMGColumn);
+
+        itemsTableView.setItems(FXCollections.observableArrayList(ItemsService.selectAll(MainController.itemsDatabase)));
+
+        subSection.getChildren().setAll(toWelcome, topSection, toEdit, itemsTableView);
         return viewScene;
     }
 }
