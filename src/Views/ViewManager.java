@@ -43,6 +43,12 @@ public class ViewManager {
         toEdit.setTranslateX(490);
         toEdit.setTranslateY(195);
 
+        Button addItem = new Button("Add Item");
+        toEdit.setPrefSize(90, 31);
+        toEdit.setOnAction(ae -> ViewManagerController.toAddItem());
+        toEdit.setTranslateX(490);
+        toEdit.setTranslateY(175);
+
         Button toWelcome = new Button("Back");
         toWelcome.setPrefSize(90, 31);
         toWelcome.setOnAction(ae -> ViewManagerController.toWelcome());
@@ -52,39 +58,53 @@ public class ViewManager {
         Scene viewScene = new Scene(subSection, 586, 350);
 
         TableView<Items> itemsTableView = new TableView<>();
-        itemsTableView.setPrefSize(460, 270);
+        itemsTableView.setPrefSize(490, 270);
 
-        TableColumn<Items, String> itemIDColumn = new TableColumn<>("Item ID");
+        TableColumn<Items, String> itemIDColumn = new TableColumn<>("ItemID");
         itemIDColumn.setCellValueFactory(new PropertyValueFactory<>("itemID"));
+        itemIDColumn.prefWidthProperty().bind(itemsTableView.widthProperty().multiply(0.12));
+        itemIDColumn.setResizable(false);
         itemsTableView.getColumns().add(itemIDColumn);
+
+        TableColumn<Items, String> itemIMGColumn = new TableColumn<>("itemIMG");
+        itemIMGColumn.setCellValueFactory(new PropertyValueFactory<>("itemIMG"));
+        itemIMGColumn.prefWidthProperty().bind(itemsTableView.widthProperty().multiply(0.14));
+        itemIMGColumn.setResizable(false);
+        itemsTableView.getColumns().add(itemIMGColumn);
 
         TableColumn<Items, String> itemNameColumn = new TableColumn<>("Item");
         itemNameColumn.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        itemNameColumn.prefWidthProperty().bind(itemsTableView.widthProperty().multiply(0.14));
+        itemNameColumn.setResizable(false);
         itemsTableView.getColumns().add(itemNameColumn);
 
         TableColumn<Items, String> sellingPriceColumn = new TableColumn<>("Selling Price");
         sellingPriceColumn.setCellValueFactory(new PropertyValueFactory<>("sellingPrice"));
+        sellingPriceColumn.prefWidthProperty().bind(itemsTableView.widthProperty().multiply(0.18));
+        sellingPriceColumn.setResizable(false);
         itemsTableView.getColumns().add(sellingPriceColumn);
 
         TableColumn<Items, String> buyingPriceColumn = new TableColumn<>("Buying Price");
         buyingPriceColumn.setCellValueFactory(new PropertyValueFactory<>("buyingPrice"));
+        buyingPriceColumn.prefWidthProperty().bind(itemsTableView.widthProperty().multiply(0.18));
+        buyingPriceColumn.setResizable(false);
         itemsTableView.getColumns().add(buyingPriceColumn);
 
         TableColumn<Items, String> groupColumn = new TableColumn<>("Group");
         groupColumn.setCellValueFactory(new PropertyValueFactory<>("groups"));
+        groupColumn.prefWidthProperty().bind(itemsTableView.widthProperty().multiply(0.10));
+        groupColumn.setResizable(false);
         itemsTableView.getColumns().add(groupColumn);
 
         TableColumn<Items, String> quantityColumn = new TableColumn<>("Quantity");
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        quantityColumn.prefWidthProperty().bind(itemsTableView.widthProperty().multiply(0.16));
+        quantityColumn.setResizable(false);
         itemsTableView.getColumns().add(quantityColumn);
-
-        TableColumn<Items, String> itemIMGColumn = new TableColumn<>("itemIMG");
-        itemIMGColumn.setCellValueFactory(new PropertyValueFactory<>("itemIMG"));
-        itemsTableView.getColumns().add(itemIMGColumn);
 
         itemsTableView.setItems(FXCollections.observableArrayList(ItemsService.selectAll(MainController.itemsDatabase)));
 
-        subSection.getChildren().setAll(toWelcome, topSection, toEdit, itemsTableView);
+        subSection.getChildren().setAll(toWelcome, topSection, toEdit, addItem, itemsTableView);
         return viewScene;
     }
 }
