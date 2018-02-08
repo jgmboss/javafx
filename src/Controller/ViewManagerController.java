@@ -6,6 +6,7 @@ import Views.Main;
 import Views.ManagerWelcome;
 import Views.Welcome;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class ViewManagerController {
         Main.stage.setScene(Edit.edit());
 
     }
-    public static void addItem(){
+    /*public static void addItem(){
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Add a new item");
         dialog.setHeaderText("Adding a new item");
@@ -40,18 +41,21 @@ public class ViewManagerController {
 
         Optional<String> name = dialog.showAndWait();
         Optional<String> description = dialog.showAndWait();
-        //Optional<Double> sellingPrice = dialog.showAndWait();
+        Optional<String> sellingPrice = dialog.showAndWait();
+        Optional<String> buyingPrice = dialog.showAndWait();
+        Optional<String> sellingPrice = dialog.showAndWait();
 
-       // Items newItem = new Items(0, name.get(), description.get(), sellingPrice.get(),  )
+
+        Items newItem = new Items(0, name.get(), description.get(), sellingPrice.get(),  )
        // if (name.isPresent()){
         //    System.out.println("Your name: " + name.get());
         //}
 
 
-    }
+    }*/
 }
 
-    /*public void addItem() {
+   /* public void addItem() {
 
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Add new Item");
@@ -66,14 +70,28 @@ public class ViewManagerController {
         dialog.setContentText("Group:");
         Optional<String> name = dialog.showAndWait();
         Optional<String> description = dialog.showAndWait();
-        Optional<Double> buyingPrice = dialog.showAndWait();
-        Optional<Double> sellingPrice = dialog.showAndWait();
-        Optional<Integer> quantity = dialog.showAndWait();
+        Optional<String> tempBuyingPrice = dialog.showAndWait();
+        Optional<String> tempSellingPrice = dialog.showAndWait();
+        Optional<String> tempQuantity = dialog.showAndWait();
         Optional<String> group = dialog.showAndWait();
 
+        String buyingPrice = tempBuyingPrice.toString();
+        int finalBuyingPrice = Integer.parseInt(buyingPrice);
+        Double finalBuyingPrice2 = finalBuyingPrice;
+
+        String sellingPrice = tempSellingPrice.toString();
+       int finalSellingPrice Integer.parseInt(sellingPrice);
+        Double finalSellingPrice2 = finalSellingPrice;
+
+        String quantity = tempQuantity.toString();
+        Integer finalQuantity = Integer.parseInt(quantity);
+
+        double.(tempQuantity);
+
+        Integer.parseInt(tempQuantity);
 
         if (name.isPresent() && !name.get().equals("")){
-            Items newItem = new Items(0, name.get(), description.get(), buyingPrice.get(), sellingPrice.get(), group.get(), quantity.get(), "");
+            Items newItem = new Items(0, name.get(), description.get(), buyingPrice, sellingPrice, group.get(), finalQuantity, "");
             ItemsService.save(newItem, MainController.itemsDatabase);
 
              Items selectedItem = itemsTableView.getSelectionModel().getSelectedItem();

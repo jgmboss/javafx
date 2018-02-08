@@ -39,7 +39,7 @@ public class ViewManager {
 
         Button addItem = new Button("Add Item");
         addItem.setPrefSize(90, 31);
-        addItem.setOnAction(ae -> ViewManagerController.addItem());
+        addItem.setOnAction(ae -> ViewManagerController.Temp());
         addItem.setTranslateX(490);
         addItem.setTranslateY(125);
 
@@ -51,7 +51,7 @@ public class ViewManager {
 
         Button deleteItem = new Button("Delete Item");
         deleteItem.setPrefSize(90, 31);
-        deleteItem.setOnAction(ae -> ViewManagerController.deleteItem());
+        deleteItem.setOnAction(ae -> ViewManagerController.Temp());
         deleteItem.setTranslateX(490);
         deleteItem.setTranslateY(195);
 
