@@ -3,7 +3,9 @@ package Controller;
 import Model.*;
 import Views.Login;
 import Views.Main;
+import Views.ManagerWelcome;
 import Views.SignUp;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
@@ -32,6 +34,10 @@ public class SignUpController {
         String inPass = SignUp.passIn.getText();
         String inPass2 = SignUp.passIn2.getText();
 
+        Boolean duplicate = false;
+
+        ArrayList<Users> userList = UserService.selectAll(MainController.usersDatabase);
+
         if (    username.isEmpty() ||
                 firstname.isEmpty() ||
                 lastname.isEmpty() ||
@@ -42,20 +48,30 @@ public class SignUpController {
         else if (username.length() < 5){
             usernameError();
         }
-        else if (inPass.equals(inPass2)){
 
-            String hash = passwordHasher(inPass);
-
-            Users newUser = new Users(0, firstname, lastname, "", false, true, username, hash);
-            UserService.save(newUser, MainController.usersDatabase);
-
-            Main.stage.setScene(Login.login());
-
+        else if (inPass.equals(inPass2)) {
+            if (duplicate == false);
+                    for (Users u : userList) {
+                System.out.println("Testing user " + u.getUserUN() + " with " +username);
+                if (username.equals(u.getUserUN())) {
+                    usernameTakenError();
+                    duplicate = true;
+                    break;
+                }
+            }
         }
         else{
             passwordError();
         }
-    }
+if (duplicate == false) {
+
+    String hash = passwordHasher(inPass);
+    Users newUser = new Users(0, firstname, lastname, "", false, true, username, hash);
+    UserService.save(newUser, MainController.usersDatabase);
+    Main.stage.setScene(Login.login());
+
+}
+        }
 
     public static void nullError(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -78,6 +94,15 @@ public class SignUpController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Username Error");
         alert.setHeaderText("Username must be at least 5 characters long");
+        alert.setContentText("Please enter another username");
+
+        alert.showAndWait();
+    }
+
+    public static void usernameTakenError(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Username Taken");
+        alert.setHeaderText("This username has been taken");
         alert.setContentText("Please enter another username");
 
         alert.showAndWait();

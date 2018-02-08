@@ -37,17 +37,23 @@ public class ViewManager {
         subSection.setTranslateY(80);
         subSection.setStyle("-fx-background-color: Darkgray;");
 
+        Button addItem = new Button("Add Item");
+        addItem.setPrefSize(90, 31);
+        addItem.setOnAction(ae -> ViewManagerController.addItem());
+        addItem.setTranslateX(490);
+        addItem.setTranslateY(125);
+
         Button toEdit = new Button("Edit");
         toEdit.setPrefSize(90, 31);
         toEdit.setOnAction(ae -> ViewManagerController.toEdit());
         toEdit.setTranslateX(490);
-        toEdit.setTranslateY(195);
+        toEdit.setTranslateY(160);
 
-        Button addItem = new Button("Add Item");
-        toEdit.setPrefSize(90, 31);
-        toEdit.setOnAction(ae -> ViewManagerController.toAddItem());
-        toEdit.setTranslateX(490);
-        toEdit.setTranslateY(175);
+        Button deleteItem = new Button("Delete Item");
+        deleteItem.setPrefSize(90, 31);
+        deleteItem.setOnAction(ae -> ViewManagerController.deleteItem());
+        deleteItem.setTranslateX(490);
+        deleteItem.setTranslateY(195);
 
         Button toWelcome = new Button("Back");
         toWelcome.setPrefSize(90, 31);
@@ -104,7 +110,7 @@ public class ViewManager {
 
         itemsTableView.setItems(FXCollections.observableArrayList(ItemsService.selectAll(MainController.itemsDatabase)));
 
-        subSection.getChildren().setAll(toWelcome, topSection, toEdit, addItem, itemsTableView);
+        subSection.getChildren().setAll(toWelcome, topSection, toEdit, addItem, itemsTableView, deleteItem);
         return viewScene;
     }
 }
