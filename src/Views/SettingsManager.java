@@ -1,5 +1,6 @@
 package Views;
 
+import Controller.LoginController;
 import Controller.SettingsController;
 import Controller.SettingsManagerController;
 import javafx.scene.Scene;
@@ -8,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+
+import static Controller.LoginController.currentUserLN;
 
 public class SettingsManager {
     public static TextField usernameIN;
@@ -23,6 +26,9 @@ public class SettingsManager {
         topSection.setPrefSize(586, 87);
         topSection.setTranslateX(0);
         topSection.setTranslateY(-87);
+
+        String currentUser = LoginController.currentUserFN;
+        System.out.println(currentUser);
 
         Label name = new Label("Manager");
         name.setTranslateX(2);
@@ -80,11 +86,13 @@ public class SettingsManager {
         usernameTxt.setTranslateX(120);
         usernameTxt.setTranslateY(30);
 
-        Label firstName = new Label("First Name: " );
+        Label firstName = new Label("First Name: " + currentUser);
         firstName.setTranslateX(120);
         firstName.setTranslateY(45);
 
-        Label surname = new Label("Surname: ");
+        String currentUserLast = currentUserLN;
+        System.out.println(currentUserLast);
+        Label surname = new Label("Surname: " + currentUserLast);
         surname.setTranslateX(120);
         surname.setTranslateY(60);
 

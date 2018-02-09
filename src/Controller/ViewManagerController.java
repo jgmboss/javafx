@@ -55,7 +55,7 @@ public class ViewManagerController {
     }*/
 }
 
-   /* public void addItem() {
+  /*  public void addItem() {
 
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Add new Item");
@@ -77,7 +77,8 @@ public class ViewManagerController {
 
         String buyingPrice = tempBuyingPrice.toString();
         int finalBuyingPrice = Integer.parseInt(buyingPrice);
-        Double finalBuyingPrice2 = finalBuyingPrice;
+        Float finalBuyingPrice2 = finalBuyingPrice;
+
 
         String sellingPrice = tempSellingPrice.toString();
        int finalSellingPrice Integer.parseInt(sellingPrice);
